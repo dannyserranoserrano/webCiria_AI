@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Villa de Ciria - Descubre la magia de nuestro pueblo</title>
+  <meta name="description"
+    content="Descubre la magia de la Villa de Ciria, un pueblo encantador en la provincia de Soria. Explora su historia, paisajes, actividades y gastronomía.">
+  <meta name="keywords"
+    content="Villa de Ciria, Ciria, Soria, turismo rural, historia, gastronomía, actividades, naturaleza, España, pueblos con encanto">
+  <meta name="author" content="Villa de Ciria">
+  <meta property="og:title" content="Villa de Ciria - Descubre la magia de nuestro pueblo">
+  <meta property="og:description"
+    content="Explora la historia, paisajes y actividades de la Villa de Ciria, un tesoro escondido en Soria.">
+  <meta property="og:image"
+    content="https://readdy.ai/api/search-image?query=Beautiful%20panoramic%20view%20of%20Ciria%20village%20in%20Spain%20with%20ancient%20stone%20buildings%2C%20church%20tower%2C%20and%20mountains%20in%20the%20background.%20Dramatic%20sky%20with%20soft%20clouds.%20Rural%20Spanish%20countryside%20landscape%20with%20traditional%20architecture.%20Warm%20evening%20light.%20High%20quality%2C%20photorealistic.&width=1920&height=1080&seq=1&orientation=landscape">
+  <meta property="og:url" content="https://www.villaciria.es">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Villa de Ciria - Descubre la magia de nuestro pueblo">
+  <meta name="twitter:description"
+    content="Explora la historia, paisajes y actividades de Villa de Ciria, un tesoro escondido en Soria.">
+  <meta name="twitter:image"
+    content="https://readdy.ai/api/search-image?query=Beautiful%20panoramic%20view%20of%20Ciria%20village%20in%20Spain%20with%20ancient%20stone%20buildings%2C%20church%20tower%2C%20and%20mountains%20in%20the%20background.%20Dramatic%20sky%20with%20soft%20clouds.%20Rural%20Spanish%20countryside%20landscape%20with%20traditional%20architecture.%20Warm%20evening%20light.%20High%20quality%2C%20photorealistic.&width=1920&height=1080&seq=1&orientation=landscape">
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { primary: '#3B82F6', secondary: '#10B981' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-white">
+  <!-- Header Section -->
+  <header class="hero-section relative">
+    <nav class="navbar fixed w-full z-50 px-6 py-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="#" class="text-white text-3xl font-['Pacifico']">Villa de Ciria</a>
+        <div class="hidden md:flex space-x-8">
+          <a href="#destacados" class="text-white hover:text-primary transition-colors">Destacados</a>
+          <a href="#galeria" class="text-white hover:text-primary transition-colors">Galería</a>
+          <a href="#mapa" class="text-white hover:text-primary transition-colors">Mapa</a>
+          <a href="#informacion" class="text-white hover:text-primary transition-colors">Información</a>
+          <a href="#actividades" class="text-white hover:text-primary transition-colors">Actividades</a>
+        </div>
+        <div class="md:hidden w-10 h-10 flex items-center justify-center">
+          <i class="ri-menu-line text-white ri-2x"></i>
+        </div>
+      </div>
+    </nav>
+    <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
+      <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">Descubre la Villa de Ciria</h1>
+      <p class="text-xl md:text-2xl text-white mb-10 max-w-3xl">Un tesoro escondido en la provincia de Soria con
+        paisajes impresionantes y rica historia</p>
+      <button id="exploreButton"
+        class="bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-button text-lg font-semibold transition-colors shadow-lg whitespace-nowrap">Explorar
+        Ahora</button>
+      <!-- Welcome Modal -->
+      <div id="welcomeModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg max-w-3xl w-full mx-4 overflow-hidden shadow-2xl">
+          <div class="relative">
+            <img
+              src="https://readdy.ai/api/search-image?query=Aerial%20view%20of%20Ciria%20village%20in%20Spain%20showing%20traditional%20stone%20buildings%2C%20church%20tower%2C%20and%20surrounding%20landscape%20with%20mountains%20and%20forests.%20Beautiful%20Spanish%20rural%20town%20with%20historic%20architecture.%20Dramatic%20sunset%20lighting.%20High%20quality%2C%20cinematic%2C%20photorealistic.&width=1200&height=600&seq=10&orientation=landscape"
+              alt="Bienvenidos a Ciria" class="w-full h-64 object-cover">
+            <button id="closeModal"
+              class="absolute top-4 right-4 w-8 h-8 bg-black/50 hover:bg-black/70 rounded-full flex items-center justify-center text-white transition-colors">
+              <i class="ri-close-line"></i>
+            </button>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold mb-4">Bienvenidos a Villa de Ciria</h3>
+            <p class="text-gray-600 mb-6">Descubre los tesoros ocultos de nuestra villa histórica. Te invitamos a
+              explorar:</p>
+            <div class="grid grid-cols-2 gap-4">
+              <button id="goToDestacados"
+                class="bg-primary hover:bg-blue-600 text-white px-4 py-3 rounded-button font-medium transition-colors whitespace-nowrap flex items-center justify-center">
+                <i class="ri-star-line mr-2"></i>
+                Lugares Destacados
+              </button>
+              <button id="goToActividades"
+                class="bg-white border border-primary text-primary hover:bg-primary hover:text-white px-4 py-3 rounded-button font-medium transition-colors whitespace-nowrap flex items-center justify-center">
+                <i class="ri-calendar-line mr-2"></i>
+                Actividades
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- Destacados Section -->
+  <section id="destacados" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-16">Lugares Destacados</h2>
+      <div class="relative overflow-hidden rounded-lg shadow-xl">
+        <div id="carousel" class="flex overflow-x-hidden transition-transform duration-500">
+          <div class="min-w-full">
+            <div class="relative h-[500px]">
+              <img
+                src="https://readdy.ai/api/search-image?query=Ancient%20stone%20church%20in%20Ciria%20village%2C%20Spain%2C%20with%20beautiful%20architecture%2C%20bell%20tower%2C%20and%20stone%20walls.%20Traditional%20Spanish%20rural%20religious%20building%20surrounded%20by%20village%20houses.%20Clear%20blue%20sky%20background.%20High%20quality%2C%20photorealistic%20image.&width=1200&height=800&seq=2&orientation=landscape"
+                alt="Iglesia de San Miguel" class="w-full h-full object-cover object-top">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
+                <h3 class="text-3xl font-bold text-white mb-2">Iglesia de San Miguel</h3>
+                <p class="text-white text-lg mb-4">Templo románico del siglo XII con detalles arquitectónicos únicos</p>
+              </div>
+            </div>
+          </div>
+          <div class="min-w-full">
+            <div class="relative h-[500px]">
+              <img
+                src="https://readdy.ai/api/search-image?query=Ancient%20castle%20ruins%20on%20hilltop%20in%20Ciria%2C%20Spain.%20Medieval%20stone%20fortress%20with%20dramatic%20sky%20and%20mountain%20backdrop.%20Historic%20defensive%20structure%20with%20weathered%20walls%20and%20architectural%20details.%20Atmospheric%20scene.%20High%20quality%2C%20photorealistic%20image.&width=1200&height=800&seq=8&orientation=landscape"
+                alt="Castillo de Ciria" class="w-full h-full object-cover object-top">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
+                <h3 class="text-3xl font-bold text-white mb-2">Castillo de Ciria</h3>
+                <p class="text-white text-lg mb-4">Fortaleza medieval con impresionantes vistas del valle</p>
+              </div>
+            </div>
+          </div>
+          <div class="min-w-full">
+            <div class="relative h-[500px]">
+              <img
+                src="https://readdy.ai/api/search-image?query=Traditional%20Spanish%20village%20plaza%20with%20stone%20fountain%2C%20benches%2C%20and%20historic%20buildings.%20Central%20square%20in%20Ciria%20with%20charming%20architecture%20and%20mountain%20views.%20Peaceful%20town%20center%20with%20locals%20gathering.%20Sunny%20day%20scene.%20High%20quality%2C%20photorealistic%20image.&width=1200&height=800&seq=9&orientation=landscape"
+                alt="Plaza Mayor" class="w-full h-full object-cover object-top">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
+                <h3 class="text-3xl font-bold text-white mb-2">Plaza Mayor</h3>
+                <p class="text-white text-lg mb-4">Corazón histórico de la villa con su emblemática fuente</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          <button id="slide0" class="w-3 h-3 rounded-full bg-white"></button>
+          <button id="slide1" class="w-3 h-3 rounded-full bg-white/50"></button>
+          <button id="slide2" class="w-3 h-3 rounded-full bg-white/50"></button>
+        </div>
+      </div>
+      <div class="absolute top-6 right-6 flex space-x-3">
+        <button
+          class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+          <i class="ri-facebook-fill"></i>
+        </button>
+        <button
+          class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+          <i class="ri-twitter-x-fill"></i>
+        </button>
+        <button
+          class="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors">
+          <i class="ri-instagram-fill"></i>
+        </button>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- Galería Multimedia Section -->
+  <section id="galeria" class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-16">Galería Multimedia</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="gallery-item relative rounded-lg overflow-hidden shadow-md h-80">
+          <img
+            src="https://readdy.ai/api/search-image?query=Picturesque%20stone%20houses%20in%20Ciria%20village%2C%20Spain%2C%20with%20traditional%20architecture%2C%20terracotta%20roofs%2C%20and%20flower%20pots.%20Narrow%20cobblestone%20street.%20Authentic%20Spanish%20rural%20village%20scene%20with%20warm%20sunlight.%20High%20quality%2C%20photorealistic%20image.&width=600&height=800&seq=3&orientation=portrait"
+            alt="Calles de Ciria" class="w-full h-full object-cover object-top">
+          <div class="gallery-overlay absolute inset-0 flex flex-col justify-center items-center p-6">
+            <h3 class="text-xl font-bold text-white mb-2">Calles Empedradas</h3>
+            <p class="text-white text-center mb-4">Recorre las antiguas calles de piedra que conservan la esencia
+              medieval</p>
+            <button
+              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap">Ver
+              más</button>
+          </div>
+        </div>
+        <div class="gallery-item relative rounded-lg overflow-hidden shadow-md h-80">
+          <img
+            src="https://readdy.ai/api/search-image?query=Beautiful%20mountain%20landscape%20near%20Ciria%2C%20Spain%2C%20with%20rolling%20hills%2C%20oak%20trees%2C%20and%20wildflowers.%20Spanish%20countryside%20with%20natural%20trails%20and%20grazing%20sheep.%20Clear%20blue%20sky%20with%20few%20clouds.%20Serene%20rural%20scene.%20High%20quality%2C%20photorealistic%20image.&width=600&height=800&seq=4&orientation=portrait"
+            alt="Paisajes de Ciria" class="w-full h-full object-cover object-top">
+          <div class="gallery-overlay absolute inset-0 flex flex-col justify-center items-center p-6">
+            <h3 class="text-xl font-bold text-white mb-2">Paisajes Naturales</h3>
+            <p class="text-white text-center mb-4">Entornos naturales de extraordinaria belleza que rodean la villa</p>
+            <button
+              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap">Ver
+              más</button>
+          </div>
+        </div>
+        <div class="gallery-item relative rounded-lg overflow-hidden shadow-md h-80">
+          <div class="w-full h-full bg-gray-900 flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+              <i class="ri-play-fill text-white ri-2x"></i>
+            </div>
+          </div>
+          <div class="gallery-overlay absolute inset-0 flex flex-col justify-center items-center p-6">
+            <h3 class="text-xl font-bold text-white mb-2">Festividades Locales</h3>
+            <p class="text-white text-center mb-4">Video de las tradicionales fiestas patronales de San Miguel</p>
+            <button
+              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap">Reproducir</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Mapa Interactivo Section -->
+  <section id="mapa" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-16">Mapa Interactivo</h2>
+      <div class="flex flex-col md:flex-row gap-8 bg-white rounded-lg shadow-xl overflow-hidden">
+        <div class="md:w-1/4 p-6 bg-gray-100">
+          <h3 class="text-xl font-bold mb-6">Puntos de Interés</h3>
+          <ul class="space-y-4">
+            <li
+              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
+              <div class="w-8 h-8 flex items-center justify-center mr-3">
+                <i class="ri-ancient-pavilion-line"></i>
+              </div>
+              <span>Iglesia de San Miguel</span>
+            </li>
+            <li
+              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
+              <div class="w-8 h-8 flex items-center justify-center mr-3">
+                <i class="ri-government-line"></i>
+              </div>
+              <span>Ayuntamiento</span>
+            </li>
+            <li
+              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
+              <div class="w-8 h-8 flex items-center justify-center mr-3">
+                <i class="ri-building-2-line"></i>
+              </div>
+              <span>Plaza Mayor</span>
+            </li>
+            <li
+              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
+              <div class="w-8 h-8 flex items-center justify-center mr-3">
+                <i class="ri-restaurant-line"></i>
+              </div>
+              <span>Restaurante El Mirador</span>
+            </li>
+            <li
+              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
+              <div class="w-8 h-8 flex items-center justify-center mr-3">
+                <i class="ri-hotel-line"></i>
+              </div>
+              <span>Casa Rural La Encina</span>
+            </li>
+          </ul>
+        </div>
+        <div class="md:w-3/4 h-[600px] relative overflow-hidden">
+          <div class="absolute inset-0"
+            style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-position: center; background-size: cover;">
+          </div>
+          <div class="absolute top-4 right-4 flex flex-col space-y-2">
+            <button class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
+              <i class="ri-add-line"></i>
+            </button>
+            <button class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
+              <i class="ri-subtract-line"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Información del Pueblo Section -->
+  <section id="informacion" class="py-20">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-16">Información de la Villa</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div class="bg-white rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+            <div class="w-8 h-8 flex items-center justify-center text-primary">
+              <i class="ri-history-line ri-xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4">Historia</h3>
+          <p class="text-gray-700 mb-6">Ciria tiene sus orígenes en la época medieval, cuando era un importante enclave
+            defensivo en la frontera entre los reinos de Castilla y Aragón. Su castillo, hoy en ruinas, fue testigo de
+            numerosas batallas y acontecimientos históricos.</p>
+          <div class="text-center">
+            <button
+              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap">
+              Leer más
+              <div class="w-5 h-5 flex items-center justify-center ml-1">
+                <i class="ri-arrow-right-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+            <div class="w-8 h-8 flex items-center justify-center text-primary">
+              <i class="ri-building-4-line ri-xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4">Arquitectura</h3>
+          <p class="text-gray-700 mb-6">Las construcciones de Ciria destacan por el uso de la piedra caliza local,
+            creando un conjunto arquitectónico armonioso y bien conservado. Las casas tradicionales, con sus balcones de
+            madera y tejados de teja árabe, son un ejemplo perfecto de la arquitectura soriana.</p>
+          <div class="text-center">
+            <button
+              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap">
+              Leer más
+              <div class="w-5 h-5 flex items-center justify-center ml-1">
+                <i class="ri-arrow-right-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="bg-white rounded-lg shadow-md p-8 hover:shadow-xl transition-shadow">
+          <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6 mx-auto">
+            <div class="w-8 h-8 flex items-center justify-center text-primary">
+              <i class="ri-goblet-line ri-xl"></i>
+            </div>
+          </div>
+          <h3 class="text-xl font-bold text-center mb-4">Gastronomía</h3>
+          <p class="text-gray-700 mb-6">La cocina de Ciria es un reflejo de la tradición castellana, con platos
+            contundentes como el cordero asado, las migas pastoriles y las judías pintas. Los productos locales como las
+            setas, la caza y los embutidos artesanales son la base de su rica gastronomía.</p>
+          <div class="text-center">
+            <button
+              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap">
+              Leer más
+              <div class="w-5 h-5 flex items-center justify-center ml-1">
+                <i class="ri-arrow-right-line"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Actividades Section -->
+  <section id="actividades" class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-8">Actividades y Eventos</h2>
+      <p class="text-gray-700 text-center max-w-3xl mx-auto mb-16">Descubre todas las experiencias que puedes disfrutar
+        durante tu visita a la Villa de Ciria</p>
+      <div id="activity-filters" class="flex flex-wrap mb-10 justify-center gap-4">
+        <button data-filter="all"
+          class="bg-primary text-white px-6 py-3 rounded-button font-medium shadow-sm whitespace-nowrap">Todos</button>
+        <button data-filter="Senderismo"
+          class="bg-white text-gray-700 px-6 py-3 rounded-button font-medium shadow-sm hover:bg-gray-100 transition-colors whitespace-nowrap">Senderismo</button>
+        <button data-filter="Gastronomía"
+          class="bg-white text-gray-700 px-6 py-3 rounded-button font-medium shadow-sm hover:bg-gray-100 transition-colors whitespace-nowrap">Gastronomía</button>
+        <button data-filter="Cultura"
+          class="bg-white text-gray-700 px-6 py-3 rounded-button font-medium shadow-sm hover:bg-gray-100 transition-colors whitespace-nowrap">Cultura</button>
+        <button data-filter="Festividades"
+          class="bg-white text-gray-700 px-6 py-3 rounded-button font-medium shadow-sm hover:bg-gray-100 transition-colors whitespace-nowrap">Festividades</button>
+      </div>
+      <div id="activities-grid" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=Hiking%20trail%20through%20oak%20forest%20near%20Ciria%2C%20Spain.%20Beautiful%20mountain%20path%20with%20stone%20markers%2C%20wildflowers%2C%20and%20natural%20landscape.%20Spanish%20countryside%20hiking%20route%20with%20stunning%20views.%20Clear%20blue%20sky.%20High%20quality%2C%20photorealistic%20image.&width=600&height=400&seq=5&orientation=landscape"
+              alt="Ruta del Moncayo" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Senderismo</span>
+              <span class="text-gray-500 text-sm">Todo el año</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Ruta del Moncayo</h3>
+            <p class="text-gray-700 mb-4">Recorrido de 12 km por los senderos que rodean la villa con vistas panorámicas
+              al Moncayo.</p>
+            <a href="https://readdy.ai/home/9735316a-1ffe-4705-bf16-d85a0b676bc5/2a029970-077a-4044-a4f1-47df9d341160"
+              data-readdy="true" class="block">
+              <button
+                class="w-full bg-primary hover:bg-blue-600 text-white py-2 rounded-button font-medium transition-colors whitespace-nowrap">Más
+                Información</button>
+            </a>
+          </div>
+        </div>
+        <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=Traditional%20Spanish%20food%20festival%20in%20village%20square%20with%20local%20dishes%2C%20wine%2C%20and%20people%20celebrating.%20Tables%20with%20regional%20cuisine%2C%20chefs%20cooking%2C%20and%20villagers%20enjoying%20food.%20Festive%20atmosphere%20with%20decorations.%20Spanish%20gastronomic%20celebration.%20High%20quality%2C%20photorealistic%20image.&width=600&height=400&seq=6&orientation=landscape"
+              alt="Feria Gastronómica" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Gastronomía</span>
+              <span class="text-gray-500 text-sm">Agosto</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Feria Gastronómica</h3>
+            <p class="text-gray-700 mb-4">Degustación de productos locales y platos tradicionales elaborados por los
+              vecinos del pueblo.</p>
+            <a href="https://readdy.ai/home/9735316a-1ffe-4705-bf16-d85a0b676bc5/2a029970-077a-4044-a4f1-47df9d341160"
+              data-readdy="true" class="block">
+              <button
+                class="w-full bg-primary hover:bg-blue-600 text-white py-2 rounded-button font-medium transition-colors whitespace-nowrap">Más
+                Información</button>
+            </a>
+          </div>
+        </div>
+        <div class="activity-card bg-white rounded-lg shadow-md overflow-hidden">
+          <div class="h-48 overflow-hidden">
+            <img
+              src="https://readdy.ai/api/search-image?query=Traditional%20Spanish%20village%20festival%20with%20religious%20procession%2C%20folk%20dancers%20in%20colorful%20costumes%2C%20musicians%20playing%20traditional%20instruments%2C%20and%20decorated%20streets.%20Villagers%20celebrating%20patron%20saint%20day%20with%20candles%20and%20flowers.%20Authentic%20Spanish%20cultural%20celebration.%20High%20quality%2C%20photorealistic%20image.&width=600&height=400&seq=7&orientation=landscape"
+              alt="Fiestas de San Miguel" class="w-full h-full object-cover object-top">
+          </div>
+          <div class="p-6">
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Festividades</span>
+              <span class="text-gray-500 text-sm">29 de Septiembre</span>
+            </div>
+            <h3 class="text-xl font-bold mb-2">Fiestas de San Miguel</h3>
+            <p class="text-gray-700 mb-4">Celebraciones en honor al patrón con procesión, bailes tradicionales y
+              actividades para todas las edades.</p>
+            <a href="https://readdy.ai/home/9735316a-1ffe-4705-bf16-d85a0b676bc5/2a029970-077a-4044-a4f1-47df9d341160"
+              data-readdy="true" class="block">
+              <button
+                class="w-full bg-primary hover:bg-blue-600 text-white py-2 rounded-button font-medium transition-colors whitespace-nowrap">Más
+                Información</button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer Section -->
+  <footer class="bg-gray-900 text-white py-16">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div>
+          <a href="#" class="text-3xl font-['Pacifico'] mb-6 block">Villa de Ciria</a>
+          <p class="text-gray-400 mb-6">Un rincón con encanto en la provincia de Soria que te invita a descubrir su
+            historia, naturaleza y tradiciones.</p>
+          <div class="flex space-x-4">
+            <a href="#"
+              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-facebook-fill"></i>
+              </div>
+            </a>
+            <a href="#"
+              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-twitter-x-fill"></i>
+              </div>
+            </a>
+            <a href="#"
+              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-instagram-fill"></i>
+              </div>
+            </a>
+            <a href="#"
+              class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-youtube-fill"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-6">Enlaces Rápidos</h3>
+          <ul class="space-y-3">
+            <li><a href="#destacados" class="text-gray-400 hover:text-white transition-colors">Destacados</a></li>
+            <li><a href="#galeria" class="text-gray-400 hover:text-white transition-colors">Galería</a></li>
+            <li><a href="#mapa" class="text-gray-400 hover:text-white transition-colors">Mapa Interactivo</a></li>
+            <li><a href="#informacion" class="text-gray-400 hover:text-white transition-colors">Información</a></li>
+            <li><a href="#actividades" class="text-gray-400 hover:text-white transition-colors">Actividades</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-6">Contacto</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start">
+              <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                <i class="ri-map-pin-line"></i>
+              </div>
+              <span class="text-gray-400">Plaza Mayor s/n, 42181 Ciria, Soria</span>
+            </li>
+            <li class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-phone-line"></i>
+              </div>
+              <span class="text-gray-400">+34 975 123 456</span>
+            </li>
+            <li class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-mail-line"></i>
+              </div>
+              <span class="text-gray-400">info@villaciria.es</span>
+            </li>
+            <li class="flex items-center">
+              <div class="w-5 h-5 flex items-center justify-center mr-3">
+                <i class="ri-time-line"></i>
+              </div>
+              <span class="text-gray-400">Oficina de Turismo: L-V 10:00 - 14:00</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-6">Suscríbete</h3>
+          <p class="text-gray-400 mb-4">Recibe las últimas novedades y eventos de la Villa de Ciria</p>
+          <form class="space-y-4">
+            <div>
+              <input type="email" placeholder="Tu correo electrónico"
+                class="w-full px-4 py-3 bg-gray-800 border-none rounded text-white placeholder-gray-500 focus:ring-2 focus:ring-primary">
+            </div>
+            <label class="flex items-center cursor-pointer">
+              <input type="checkbox" class="custom-checkbox opacity-0 absolute h-0 w-0">
+              <span class="checkbox-icon w-5 h-5 border border-gray-500 rounded-sm inline-block relative mr-3"></span>
+              <span class="text-gray-400 text-sm">Acepto recibir comunicaciones</span>
+            </label>
+            <button type="submit"
+              class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-button font-medium transition-colors whitespace-nowrap">Suscribirse</button>
+          </form>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2025 Villa de Ciria. Todos los derechos reservados.</p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Política de Privacidad</a>
+          <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Términos y Condiciones</a>
+          <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Aviso Legal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>src = "/script.js"</script>
+</body>
+
+</html>
