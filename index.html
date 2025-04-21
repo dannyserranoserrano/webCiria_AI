@@ -23,7 +23,6 @@
   <meta name="twitter:image"
     content="https://readdy.ai/api/search-image?query=Beautiful%20panoramic%20view%20of%20Ciria%20village%20in%20Spain%20with%20ancient%20stone%20buildings%2C%20church%20tower%2C%20and%20mountains%20in%20the%20background.%20Dramatic%20sky%20with%20soft%20clouds.%20Rural%20Spanish%20countryside%20landscape%20with%20traditional%20architecture.%20Warm%20evening%20light.%20High%20quality%2C%20photorealistic.&width=1920&height=1080&seq=1&orientation=landscape">
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
-  <script>tailwind.config = { theme: { extend: { colors: { primary: '#3B82F6', secondary: '#10B981' }, borderRadius: { 'none': '0px', 'sm': '4px', DEFAULT: '8px', 'md': '12px', 'lg': '16px', 'xl': '20px', '2xl': '24px', '3xl': '32px', 'full': '9999px', 'button': '8px' } } } }</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
@@ -35,10 +34,11 @@
 </head>
 
 <body class="bg-white">
-  <!-- Header Section -->
+  <!-- HEADER SECTION -->
   <header class="hero-section relative">
+    <!--navbar-->
     <nav class="navbar fixed w-full z-50 px-6 py-4">
-      <div class="container mx-auto flex justify-between items-center">
+      <div class="container mx-auto flex justify-between items-center relative">
         <a href="#" class="text-white text-3xl font-['Pacifico']">Villa de Ciria</a>
         <div class="hidden md:flex space-x-8">
           <a href="#destacados" class="text-white hover:text-primary transition-colors">Destacados</a>
@@ -47,11 +47,24 @@
           <a href="#informacion" class="text-white hover:text-primary transition-colors">Información</a>
           <a href="#actividades" class="text-white hover:text-primary transition-colors">Actividades</a>
         </div>
-        <div class="md:hidden w-10 h-10 flex items-center justify-center">
+        <button id="menuButton" class="md:hidden w-10 h-10 flex items-center justify-center">
           <i class="ri-menu-line text-white ri-2x"></i>
+        </button>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden absolute top-full right-0 left-0 bg-gray-900/95 backdrop-blur-sm">
+          <div class="py-4">
+            <a href="#destacados" class="block text-white hover:text-primary transition-colors py-3 px-6">Destacados</a>
+            <a href="#galeria" class="block text-white hover:text-primary transition-colors py-3 px-6">Galería</a>
+            <a href="#mapa" class="block text-white hover:text-primary transition-colors py-3 px-6">Mapa</a>
+            <a href="#informacion"
+              class="block text-white hover:text-primary transition-colors py-3 px-6">Información</a>
+            <a href="#actividades"
+              class="block text-white hover:text-primary transition-colors py-3 px-6">Actividades</a>
+          </div>
         </div>
       </div>
     </nav>
+    <!-- HeadFile Content -->
     <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
       <h1 class="text-5xl md:text-7xl font-bold text-white mb-6">Descubre la Villa de Ciria</h1>
       <p class="text-xl md:text-2xl text-white mb-10 max-w-3xl">Un tesoro escondido en la provincia de Soria con
@@ -77,12 +90,12 @@
               explorar:</p>
             <div class="grid grid-cols-2 gap-4">
               <button id="goToDestacados"
-                class="bg-primary hover:bg-blue-600 text-white px-4 py-3 rounded-button font-medium transition-colors whitespace-nowrap flex items-center justify-center">
+                class="bg-white border border-primary text-primary hover:bg-blue-600 text-black px-4 py-3 rounded-button font-medium transition-colors whitespace-nowrap flex items-center justify-center">
                 <i class="ri-star-line mr-2"></i>
                 Lugares Destacados
               </button>
               <button id="goToActividades"
-                class="bg-white border border-primary text-primary hover:bg-primary hover:text-white px-4 py-3 rounded-button font-medium transition-colors whitespace-nowrap flex items-center justify-center">
+                class="bg-white border border-primary text-primary hover:bg-blue-600 hover:text-black px-4 py-3 rounded-button font-medium transition-colors whitespace-nowrap flex items-center justify-center">
                 <i class="ri-calendar-line mr-2"></i>
                 Actividades
               </button>
@@ -97,24 +110,36 @@
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-center mb-16">Lugares Destacados</h2>
       <div class="relative overflow-hidden rounded-lg shadow-xl">
-        <div id="carousel" class="flex overflow-x-hidden transition-transform duration-500">
-          <div class="min-w-full">
+        <!-- Add navigation arrows -->
+        <button
+          class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+          id="prevSlide">
+          <i class="ri-arrow-left-line"></i>
+        </button>
+        <button
+          class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+          id="nextSlide">
+          <i class="ri-arrow-right-line"></i>
+        </button>
+
+        <div id="carousel" class="flex transition-transform duration-500" style="transform: translateX(0%)">
+          <!-- Rest of the carousel slides remain the same -->
+          <div class="min-w-full flex-shrink-0">
             <div class="relative h-[500px]">
-              <img
-                src="https://readdy.ai/api/search-image?query=Ancient%20stone%20church%20in%20Ciria%20village%2C%20Spain%2C%20with%20beautiful%20architecture%2C%20bell%20tower%2C%20and%20stone%20walls.%20Traditional%20Spanish%20rural%20religious%20building%20surrounded%20by%20village%20houses.%20Clear%20blue%20sky%20background.%20High%20quality%2C%20photorealistic%20image.&width=1200&height=800&seq=2&orientation=landscape"
-                alt="Iglesia de San Miguel" class="w-full h-full object-cover object-top">
+              <img src="/Assets/100fd0725039eebb0423135dc7a6a4f6.jpg" alt="Iglesia de Santa María La Mayor"
+                class="w-full h-full object-cover object-top">
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
-                <h3 class="text-3xl font-bold text-white mb-2">Iglesia de San Miguel</h3>
+                <h3 class="text-3xl font-bold text-white mb-2">Iglesia de Santa María La Mayor</h3>
                 <p class="text-white text-lg mb-4">Templo románico del siglo XII con detalles arquitectónicos únicos</p>
               </div>
             </div>
           </div>
+
           <div class="min-w-full">
             <div class="relative h-[500px]">
-              <img
-                src="https://readdy.ai/api/search-image?query=Ancient%20castle%20ruins%20on%20hilltop%20in%20Ciria%2C%20Spain.%20Medieval%20stone%20fortress%20with%20dramatic%20sky%20and%20mountain%20backdrop.%20Historic%20defensive%20structure%20with%20weathered%20walls%20and%20architectural%20details.%20Atmospheric%20scene.%20High%20quality%2C%20photorealistic%20image.&width=1200&height=800&seq=8&orientation=landscape"
-                alt="Castillo de Ciria" class="w-full h-full object-cover object-top">
+              <img src="/Assets/68fbc3d0bf376dd2cc496131ce605614.jpg" alt="Castillo de Ciria"
+                class="w-full h-full object-cover object-top">
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
                 <h3 class="text-3xl font-bold text-white mb-2">Castillo de Ciria</h3>
@@ -124,13 +149,12 @@
           </div>
           <div class="min-w-full">
             <div class="relative h-[500px]">
-              <img
-                src="https://readdy.ai/api/search-image?query=Traditional%20Spanish%20village%20plaza%20with%20stone%20fountain%2C%20benches%2C%20and%20historic%20buildings.%20Central%20square%20in%20Ciria%20with%20charming%20architecture%20and%20mountain%20views.%20Peaceful%20town%20center%20with%20locals%20gathering.%20Sunny%20day%20scene.%20High%20quality%2C%20photorealistic%20image.&width=1200&height=800&seq=9&orientation=landscape"
-                alt="Plaza Mayor" class="w-full h-full object-cover object-top">
+              <img src="/Assets/389a00997a1ced56222580363c90f667.jpg" alt="Plaza Mayor"
+                class="w-full h-full object-cover object-top">
               <div
                 class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
                 <h3 class="text-3xl font-bold text-white mb-2">Plaza Mayor</h3>
-                <p class="text-white text-lg mb-4">Corazón histórico de la villa con su emblemática fuente</p>
+                <p class="text-white text-lg mb-4">Corazón histórico de la villa con su histórico frontón</p>
               </div>
             </div>
           </div>
@@ -163,19 +187,20 @@
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-center mb-16">Galería Multimedia</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
         <div class="gallery-item relative rounded-lg overflow-hidden shadow-md h-80">
           <img
             src="https://readdy.ai/api/search-image?query=Picturesque%20stone%20houses%20in%20Ciria%20village%2C%20Spain%2C%20with%20traditional%20architecture%2C%20terracotta%20roofs%2C%20and%20flower%20pots.%20Narrow%20cobblestone%20street.%20Authentic%20Spanish%20rural%20village%20scene%20with%20warm%20sunlight.%20High%20quality%2C%20photorealistic%20image.&width=600&height=800&seq=3&orientation=portrait"
             alt="Calles de Ciria" class="w-full h-full object-cover object-top">
           <div class="gallery-overlay absolute inset-0 flex flex-col justify-center items-center p-6">
-            <h3 class="text-xl font-bold text-white mb-2">Calles Empedradas</h3>
-            <p class="text-white text-center mb-4">Recorre las antiguas calles de piedra que conservan la esencia
-              medieval</p>
+            <h3 class="text-xl font-bold text-white mb-2">Calles Empinadas</h3>
+            <p class="text-white text-center mb-4">Recorre las antiguas calles con sus características subidas</p>
             <button
               class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap">Ver
               más</button>
           </div>
         </div>
+
         <div class="gallery-item relative rounded-lg overflow-hidden shadow-md h-80">
           <img
             src="https://readdy.ai/api/search-image?query=Beautiful%20mountain%20landscape%20near%20Ciria%2C%20Spain%2C%20with%20rolling%20hills%2C%20oak%20trees%2C%20and%20wildflowers.%20Spanish%20countryside%20with%20natural%20trails%20and%20grazing%20sheep.%20Clear%20blue%20sky%20with%20few%20clouds.%20Serene%20rural%20scene.%20High%20quality%2C%20photorealistic%20image.&width=600&height=800&seq=4&orientation=portrait"
@@ -188,6 +213,7 @@
               más</button>
           </div>
         </div>
+
         <div class="gallery-item relative rounded-lg overflow-hidden shadow-md h-80">
           <div class="w-full h-full bg-gray-900 flex items-center justify-center">
             <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
@@ -196,11 +222,13 @@
           </div>
           <div class="gallery-overlay absolute inset-0 flex flex-col justify-center items-center p-6">
             <h3 class="text-xl font-bold text-white mb-2">Festividades Locales</h3>
-            <p class="text-white text-center mb-4">Video de las tradicionales fiestas patronales de San Miguel</p>
+            <p class="text-white text-center mb-4">Video de las tradicionales fiestas patronales de la Virgen de la
+              Serna</p>
             <button
               class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap">Reproducir</button>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -217,7 +245,7 @@
               <div class="w-8 h-8 flex items-center justify-center mr-3">
                 <i class="ri-ancient-pavilion-line"></i>
               </div>
-              <span>Iglesia de San Miguel</span>
+              <span>Iglesia de Santa María La Mayor</span>
             </li>
             <li
               class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
@@ -238,31 +266,34 @@
               <div class="w-8 h-8 flex items-center justify-center mr-3">
                 <i class="ri-restaurant-line"></i>
               </div>
-              <span>Restaurante El Mirador</span>
+              <span>Bar - Cafetería La Plaza</span>
             </li>
             <li
               class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
               <div class="w-8 h-8 flex items-center justify-center mr-3">
-                <i class="ri-hotel-line"></i>
+                <i class="ri-ancient-pavilion-line"></i>
               </div>
-              <span>Casa Rural La Encina</span>
+              <span>Ermita Virgen de la Serna</span>
             </li>
           </ul>
         </div>
         <div class="md:w-3/4 h-[600px] relative overflow-hidden">
-          <div class="absolute inset-0"
-            style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-position: center; background-size: cover;">
-          </div>
-          <div class="absolute top-4 right-4 flex flex-col space-y-2">
-            <button class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
-              <i class="ri-add-line"></i>
-            </button>
-            <button class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
-              <i class="ri-subtract-line"></i>
-            </button>
-          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11958.339144650415!2d-1.9931226244750977!3d41.61741779791657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd44d4c8f95d5555%3A0x402f350c24649a0!2s42181%20Ciria%2C%20Soria!5e0!3m2!1ses!2ses!4v1710425868045!5m2!1ses!2ses"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade" class="absolute inset-0">
+          </iframe>
+        </div>
+        <div class="absolute top-4 right-4 flex flex-col space-y-2">
+          <button class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
+            <i class="ri-add-line"></i>
+          </button>
+          <button class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
+            <i class="ri-subtract-line"></i>
+          </button>
         </div>
       </div>
+    </div>
     </div>
   </section>
   <!-- Información del Pueblo Section -->
@@ -523,7 +554,7 @@
       </div>
     </div>
   </footer>
-  <script>src = "/script.js"</script>
+  <script src="script.js"></script>
 </body>
 
 </html>

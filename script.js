@@ -85,28 +85,93 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
     // Carousel functionality
     const carousel = document.getElementById('carousel');
+    const prevButton = document.getElementById('prevSlide');
+    const nextButton = document.getElementById('nextSlide');
     const slideButtons = [
         document.getElementById('slide0'),
         document.getElementById('slide1'),
         document.getElementById('slide2')
     ];
+    
     let currentSlide = 0;
+    const totalSlides = 3;
+
     function updateSlides(index) {
+        // Handle circular navigation
+        if (index < 0) index = totalSlides - 1;
+        if (index >= totalSlides) index = 0;
+        
+        // Update carousel position
         carousel.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Update indicator buttons
         slideButtons.forEach((button, i) => {
-            button.classList.toggle('bg-white', i === index);
-            button.classList.toggle('bg-white/50', i !== index);
+            if (i === index) {
+                button.classList.remove('bg-white/50');
+                button.classList.add('bg-white');
+            } else {
+                button.classList.remove('bg-white');
+                button.classList.add('bg-white/50');
+            }
         });
+        
         currentSlide = index;
     }
+
+    // Navigation button event listeners
+    prevButton.addEventListener('click', () => {
+        updateSlides(currentSlide - 1);
+    });
+
+    nextButton.addEventListener('click', () => {
+        updateSlides(currentSlide + 1);
+    });
+
+    // Indicator button event listeners
     slideButtons.forEach((button, index) => {
         button.addEventListener('click', () => {
             updateSlides(index);
         });
     });
+
     // Auto-advance slides every 5 seconds
     setInterval(() => {
-        currentSlide = (currentSlide + 1) % 3;
-        updateSlides(currentSlide);
+        updateSlides(currentSlide + 1);
     }, 5000);
+});
+
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+
+    if (!menuButton || !mobileMenu) {
+        console.error('Menu elements not found!');
+        return;
+    }
+
+    menuButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        isMenuOpen = !isMenuOpen;
+        console.log('Menu button clicked, isMenuOpen:', isMenuOpen);
+        
+        if (isMenuOpen) {
+            mobileMenu.classList.remove('hidden');
+            menuButton.querySelector('i').className = 'ri-close-line text-white ri-2x';
+        } else {
+            mobileMenu.classList.add('hidden');
+            menuButton.querySelector('i').className = 'ri-menu-line text-white ri-2x';
+        }
+    });
+
+    // Close menu when clicking links
+    const mobileLinks = mobileMenu.getElementsByTagName('a');
+    Array.from(mobileLinks).forEach(link => {
+        link.addEventListener('click', () => {
+            isMenuOpen = false;
+            mobileMenu.classList.add('hidden');
+            menuButton.querySelector('i').className = 'ri-menu-line text-white ri-2x';
+        });
+    });
 });
