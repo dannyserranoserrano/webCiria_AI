@@ -236,65 +236,107 @@
   <section id="mapa" class="py-20 bg-gray-50">
     <div class="container mx-auto px-4">
       <h2 class="text-4xl font-bold text-center mb-16">Mapa Interactivo</h2>
-      <div class="flex flex-col md:flex-row gap-8 bg-white rounded-lg shadow-xl overflow-hidden">
-        <div class="md:w-1/4 p-6 bg-gray-100">
-          <h3 class="text-xl font-bold mb-6">Puntos de Interés</h3>
-          <ul class="space-y-4">
+      <div class="flex flex-col md:flex-row gap-0 bg-white rounded-lg shadow-xl overflow-hidden min-h-[500px]">
+        <!-- Columna izquierda: todos los puntos de interés -->
+        <div class="md:w-1/5 p-2 bg-gray-100 flex flex-col justify-start h-full">
+          <h3 class="text-base font-bold mb-2 text-center">Puntos de Interés</h3>
+          <ul class="space-y-1">
             <li
-              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
-              <div class="w-8 h-8 flex items-center justify-center mr-3">
-                <i class="ri-ancient-pavilion-line"></i>
-              </div>
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.61878373876499, -1.965697190975157"
+              data-description="Edificio religioso con elementos románicos y góticos, un tesoro arquitectónico."
+              data-image="/Assets/100fd0725039eebb0423135dc7a6a4f6.jpg">
+              <i class="ri-ancient-pavilion-line text-lg mr-2"></i>
               <span>Iglesia de Santa María La Mayor</span>
             </li>
             <li
-              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
-              <div class="w-8 h-8 flex items-center justify-center mr-3">
-                <i class="ri-government-line"></i>
-              </div>
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.6182251, -1.9666786"
+              data-description="Sede del ayuntamiento de Ciria, centro administrativo del pueblo."
+              data-image="/Assets/ayuntamiento.jpg">
+              <i class="ri-government-line text-lg mr-2"></i>
               <span>Ayuntamiento</span>
             </li>
             <li
-              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
-              <div class="w-8 h-8 flex items-center justify-center mr-3">
-                <i class="ri-building-2-line"></i>
-              </div>
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.61805545521695, -1.9666890146494072"
+              data-description="Plaza principal donde se celebran eventos y reuniones del pueblo."
+              data-image="/Assets/389a00997a1ced56222580363c90f667.jpg">
+              <i class="ri-building-2-line text-lg mr-2"></i>
               <span>Plaza Mayor</span>
             </li>
             <li
-              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
-              <div class="w-8 h-8 flex items-center justify-center mr-3">
-                <i class="ri-restaurant-line"></i>
-              </div>
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.6185481, -1.9665669" data-description="Bar tradicional con terraza en la plaza."
+              data-image="/Assets/barplaza.jpg">
+              <i class="ri-restaurant-line text-lg mr-2"></i>
               <span>Bar - Cafetería La Plaza</span>
             </li>
             <li
-              class="flex items-center p-3 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors">
-              <div class="w-8 h-8 flex items-center justify-center mr-3">
-                <i class="ri-ancient-pavilion-line"></i>
-              </div>
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.61792311257265, -1.9659621360262496"
+              data-description="Antiguo lavadero público, testigo de la vida cotidiana del pueblo."
+              data-image="/Assets/lavadero.jpg">
+              <i class="ri-water-line text-lg mr-2"></i>
+              <span>Lavadero Público</span>
+            </li>
+            <li
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.6230223, -1.9957273"
+              data-description="Ermita dedicada a la Virgen de la Serna, lugar de peregrinación local."
+              data-image="/Assets/ermita.jpg">
+              <i class="ri-ancient-pavilion-line text-lg mr-2"></i>
               <span>Ermita Virgen de la Serna</span>
+            </li>
+            <li
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.620845, -1.9691851"
+              data-description="Restos del castillo que defendía la villa en la Edad Media."
+              data-image="/Assets/castillo.jpg">
+              <i class="ri-castle-line text-lg mr-2"></i>
+              <span>Castillo de Ciria</span>
+            </li>
+            <li
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.64011614096962, -1.9615979268890462"
+              data-description="Ideal para paseos y disfrutar de la naturaleza por el cañon en el cual discurre."
+              data-image="/Assets/riomanubles.jpg">
+              <i class="ri-water-flash-line text-lg mr-2"></i>
+              <span>Río Manubles</span>
             </li>
           </ul>
         </div>
-        <div class="md:w-3/4 h-[600px] relative overflow-hidden">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11958.339144650415!2d-1.9931226244750977!3d41.61741779791657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd44d4c8f95d5555%3A0x402f350c24649a0!2s42181%20Ciria%2C%20Soria!5e0!3m2!1ses!2ses!4v1710425868045!5m2!1ses!2ses"
+        <!-- Mapa ampliado -->
+        <div class="md:w-4/5 h-[500px] flex items-center justify-center">
+          <iframe id="mapIframe"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.0!2d-2.0000!3d41.5800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd441f0000000000%3A0x0!2sCiria%2C%20Soria!5e0!3m2!1ses!2ses!4v1678901234567!5m2!1ses!2ses"
             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade" class="absolute inset-0">
+            referrerpolicy="no-referrer-when-downgrade" class="rounded-lg shadow-lg">
           </iframe>
         </div>
-        <div class="absolute top-4 right-4 flex flex-col space-y-2">
-          <button class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
-            <i class="ri-add-line"></i>
+      </div>
+      <!-- Botón para alternar vista 360/mapa interactivo -->
+      <div class="flex justify-center mt-8 mb-2">
+        <button id="toggle360"
+          class="bg-primary hover:bg-blue-600 text-black px-8 py-4 rounded-button font-semibold shadow-lg transition-colors whitespace-nowrap flex items-center justify-center gap-2">
+          <i class="ri-vip-crown-line text-xl"></i>
+          <span>Explora Ciria en 360°</span>
+        </button>
+      </div>
+      <!-- Añade el popup justo antes del cierre de la sección del mapa -->
+      <div id="mapPopup" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl max-w-md w-full relative">
+          <button id="closeMapPopup"
+            class="absolute top-3 right-3 w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center hover:bg-gray-300">
+            <i class="ri-close-line"></i>
           </button>
-          <button class="w-10 h-10 bg-white rounded shadow flex items-center justify-center">
-            <i class="ri-subtract-line"></i>
-          </button>
+          <img id="popupImage" src="" alt="" class="w-full h-48 object-cover rounded-t-lg">
+          <div class="p-6">
+            <h3 id="popupTitle" class="text-xl font-bold mb-2"></h3>
+            <p id="popupDescription" class="text-gray-700"></p>
+          </div>
         </div>
       </div>
-    </div>
-    </div>
   </section>
   <!-- Información del Pueblo Section -->
   <section id="informacion" class="py-20">
@@ -461,25 +503,25 @@
           <p class="text-gray-400 mb-6">Un rincón con encanto en la provincia de Soria que te invita a descubrir su
             historia, naturaleza y tradiciones.</p>
           <div class="flex space-x-4">
-            <a href="#"
+            <a href="https://www.facebook.com/profile.php?id=61579043974161"
               class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
               <div class="w-5 h-5 flex items-center justify-center">
                 <i class="ri-facebook-fill"></i>
               </div>
             </a>
-            <a href="#"
+            <a href="https://x.com/VillaDeCiria"
               class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
               <div class="w-5 h-5 flex items-center justify-center">
                 <i class="ri-twitter-x-fill"></i>
               </div>
             </a>
-            <a href="#"
+            <a href="https://www.instagram.com/villadeciria/"
               class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
               <div class="w-5 h-5 flex items-center justify-center">
                 <i class="ri-instagram-fill"></i>
               </div>
             </a>
-            <a href="#"
+            <a href="https://www.youtube.com/@VillaDeCiria"
               class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-primary transition-colors">
               <div class="w-5 h-5 flex items-center justify-center">
                 <i class="ri-youtube-fill"></i>
@@ -498,25 +540,19 @@
           </ul>
         </div>
         <div>
-          <h3 class="text-lg font-bold mb-6">Contacto</h3>
+          <h3 class="text-lg font-bold mb-6">Datos del Ayuntamiento</h3>
           <ul class="space-y-3">
             <li class="flex items-start">
               <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
                 <i class="ri-map-pin-line"></i>
               </div>
-              <span class="text-gray-400">Plaza Mayor s/n, 42181 Ciria, Soria</span>
+              <span class="text-gray-400">Plaza Mayor s/n, 42138 Ciria, Soria</span>
             </li>
             <li class="flex items-center">
               <div class="w-5 h-5 flex items-center justify-center mr-3">
                 <i class="ri-phone-line"></i>
               </div>
-              <span class="text-gray-400">+34 975 123 456</span>
-            </li>
-            <li class="flex items-center">
-              <div class="w-5 h-5 flex items-center justify-center mr-3">
-                <i class="ri-mail-line"></i>
-              </div>
-              <span class="text-gray-400">info@villaciria.es</span>
+              <span class="text-gray-400">+34 975 391 007</span>
             </li>
             <li class="flex items-center">
               <div class="w-5 h-5 flex items-center justify-center mr-3">
@@ -527,8 +563,14 @@
           </ul>
         </div>
         <div>
-          <h3 class="text-lg font-bold mb-6">Suscríbete</h3>
-          <p class="text-gray-400 mb-4">Recibe las últimas novedades y eventos de la Villa de Ciria</p>
+          <h3 class="text-lg font-bold mb-6">Contacto</h3>
+          <li class="flex items-center">
+            <div class="w-5 h-5 flex items-center justify-center mr-3">
+              <i class="ri-mail-line"></i>
+            </div>
+            <span class="text-gray-400">villadeciria@gmail.com</span>
+          </li>
+          <!-- <p class="text-gray-400 mb-4">Recibe las últimas novedades y eventos de la Villa de Ciria</p>
           <form class="space-y-4">
             <div>
               <input type="email" placeholder="Tu correo electrónico"
@@ -541,7 +583,7 @@
             </label>
             <button type="submit"
               class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-button font-medium transition-colors whitespace-nowrap">Suscribirse</button>
-          </form>
+          </form> -->
         </div>
       </div>
       <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
@@ -551,6 +593,11 @@
           <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Términos y Condiciones</a>
           <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Aviso Legal</a>
         </div>
+      </div>
+      <div class="mt-3 pt-3 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-500 text-sm mb-4 md:mb-0">Nota: El dominio villadeciria.com así como los subdominios
+          asociados
+          están protegidos por derechos de autor y son propiedad privada ajena al ayuntamiento de Ciria.</p>
       </div>
     </div>
   </footer>

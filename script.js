@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('slide1'),
         document.getElementById('slide2')
     ];
-    
+
     let currentSlide = 0;
     const totalSlides = 3;
 
@@ -100,10 +100,10 @@ document.addEventListener('DOMContentLoaded', function () {
         // Handle circular navigation
         if (index < 0) index = totalSlides - 1;
         if (index >= totalSlides) index = 0;
-        
+
         // Update carousel position
         carousel.style.transform = `translateX(-${index * 100}%)`;
-        
+
         // Update indicator buttons
         slideButtons.forEach((button, i) => {
             if (i === index) {
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 button.classList.add('bg-white/50');
             }
         });
-        
+
         currentSlide = index;
     }
 
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 // Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuButton = document.getElementById('menuButton');
     const mobileMenu = document.getElementById('mobileMenu');
     let isMenuOpen = false;
@@ -151,11 +151,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
 
-    menuButton.addEventListener('click', function(e) {
+    menuButton.addEventListener('click', function (e) {
         e.preventDefault();
         isMenuOpen = !isMenuOpen;
         console.log('Menu button clicked, isMenuOpen:', isMenuOpen);
-        
+
         if (isMenuOpen) {
             mobileMenu.classList.remove('hidden');
             menuButton.querySelector('i').className = 'ri-close-line text-white ri-2x';
@@ -174,4 +174,54 @@ document.addEventListener('DOMContentLoaded', function() {
             menuButton.querySelector('i').className = 'ri-menu-line text-white ri-2x';
         });
     });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleBtn = document.getElementById('toggle360');
+    const mapIframe = document.getElementById('mapIframe');
+    const interestColumn = document.getElementById('interestColumn');
+    let is360 = false;
+
+    toggleBtn.addEventListener('click', function () {
+        if (!is360) {
+            // Mostrar vista 360 y ocultar columna de interés
+            mapIframe.src = "https://www.google.com/maps/embed?pb=!4v1749812740793!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRDAyLXIyRlE.!2m2!1d41.61888117397476!2d-1.965886231627183!3f304.0992493883874!4f-24.811994254561228!5f0.4000000000000002";
+            interestColumn.style.display = "none";
+            toggleBtn.textContent = "Mapa interactivo";
+            is360 = true;
+        } else {
+            // Volver al mapa normal y mostrar columna de interés
+            mapIframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.0!2d-2.0000!3d41.5800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd441f0000000000%3A0x0!2sCiria%2C%20Soria!5e0!3m2!1ses!2ses!4v1678901234567!5m2!1ses!2ses";
+            interestColumn.style.display = "";
+            toggleBtn.textContent = "Explora Ciria en 360°";
+            is360 = false;
+        }
+    });
+});
+
+// Mostrar popup y centrar mapa
+document.querySelectorAll('#mapa ul li[data-coords]').forEach(function (item) {
+    item.addEventListener('click', function () {
+        const coords = this.getAttribute('data-coords');
+        const [lat, lng] = coords.split(',');
+        const mapIframe = document.getElementById('mapIframe');
+        mapIframe.src = `https://www.google.com/maps?q=${lat},${lng}&hl=es&z=17&output=embed`;
+
+        document.getElementById('popupTitle').textContent = this.querySelector('span').textContent;
+        document.getElementById('popupDescription').textContent = this.getAttribute('data-description');
+        document.getElementById('popupImage').src = this.getAttribute('data-image');
+        document.getElementById('mapPopup').classList.remove('hidden');
+    });
+});
+
+// Cerrar popup al pulsar la X
+document.getElementById('closeMapPopup').addEventListener('click', function () {
+    document.getElementById('mapPopup').classList.add('hidden');
+});
+
+// Cerrar popup al hacer clic fuera de la tarjeta
+document.getElementById('mapPopup').addEventListener('click', function (e) {
+    if (e.target === this) {
+        this.classList.add('hidden');
+    }
 });
