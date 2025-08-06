@@ -238,7 +238,7 @@
       <h2 class="text-4xl font-bold text-center mb-16">Mapa Interactivo</h2>
       <div class="flex flex-col md:flex-row gap-0 bg-white rounded-lg shadow-xl overflow-hidden min-h-[500px]">
         <!-- Columna izquierda: todos los puntos de interés -->
-        <div class="md:w-1/5 p-2 bg-gray-100 flex flex-col justify-start h-full">
+        <div class="md:w-1/5 p-2 bg-gray-100 flex flex-col justify-start h-full" id="interestColumn">
           <h3 class="text-base font-bold mb-2 text-center">Puntos de Interés</h3>
           <ul class="space-y-1">
             <li
@@ -279,6 +279,14 @@
               data-image="/Assets/lavadero.jpg">
               <i class="ri-water-line text-lg mr-2"></i>
               <span>Lavadero Público</span>
+            </li>
+            <li
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.618439,-1.963608"
+              data-description="Fuente histórica donde los vecinos se abastecían de agua y daban de beber a sus animales."
+              data-image="/Assets/lavadero.jpg">
+              <i class="ri-water-line text-lg mr-2"></i>
+              <span>Fuente Vieja</span>
             </li>
             <li
               class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
@@ -570,20 +578,6 @@
             </div>
             <span class="text-gray-400">villadeciria@gmail.com</span>
           </li>
-          <!-- <p class="text-gray-400 mb-4">Recibe las últimas novedades y eventos de la Villa de Ciria</p>
-          <form class="space-y-4">
-            <div>
-              <input type="email" placeholder="Tu correo electrónico"
-                class="w-full px-4 py-3 bg-gray-800 border-none rounded text-white placeholder-gray-500 focus:ring-2 focus:ring-primary">
-            </div>
-            <label class="flex items-center cursor-pointer">
-              <input type="checkbox" class="custom-checkbox opacity-0 absolute h-0 w-0">
-              <span class="checkbox-icon w-5 h-5 border border-gray-500 rounded-sm inline-block relative mr-3"></span>
-              <span class="text-gray-400 text-sm">Acepto recibir comunicaciones</span>
-            </label>
-            <button type="submit"
-              class="w-full bg-primary hover:bg-blue-600 text-white py-3 rounded-button font-medium transition-colors whitespace-nowrap">Suscribirse</button>
-          </form> -->
         </div>
       </div>
       <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
