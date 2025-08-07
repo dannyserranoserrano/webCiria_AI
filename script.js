@@ -90,11 +90,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const slideButtons = [
         document.getElementById('slide0'),
         document.getElementById('slide1'),
-        document.getElementById('slide2')
+        document.getElementById('slide2'),
+        document.getElementById('slide3') // Added for the fourth slide
     ];
 
     let currentSlide = 0;
-    const totalSlides = 3;
+    const totalSlides = 4;
 
     function updateSlides(index) {
         // Handle circular navigation
@@ -180,6 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('toggle360');
     const mapIframe = document.getElementById('mapIframe');
     const interestColumn = document.getElementById('interestColumn');
+    const mapContainer = document.getElementById('mapContainer');
     let is360 = false;
 
     toggleBtn.addEventListener('click', function () {
@@ -187,12 +189,16 @@ document.addEventListener('DOMContentLoaded', function () {
             // Mostrar vista 360 y ocultar columna de interés
             mapIframe.src = "https://www.google.com/maps/embed?pb=!4v1749812740793!6m8!1m7!1sCAoSFkNJSE0wb2dLRUlDQWdJRDAyLXIyRlE.!2m2!1d41.61888117397476!2d-1.965886231627183!3f304.0992493883874!4f-24.811994254561228!5f0.4000000000000002";
             interestColumn.style.display = "none";
+            mapContainer.classList.remove('md:w-4/5');
+            mapContainer.classList.add('w-full');
             toggleBtn.textContent = "Mapa interactivo";
             is360 = true;
         } else {
             // Volver al mapa normal y mostrar columna de interés
             mapIframe.src = "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.0!2d-2.0000!3d41.5800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd441f0000000000%3A0x0!2sCiria%2C%20Soria!5e0!3m2!1ses!2ses!4v1678901234567!5m2!1ses!2ses";
             interestColumn.style.display = "";
+            mapContainer.classList.remove('w-full');
+            mapContainer.classList.add('md:w-4/5');
             toggleBtn.textContent = "Explora Ciria en 360°";
             is360 = false;
         }
@@ -224,4 +230,126 @@ document.getElementById('mapPopup').addEventListener('click', function (e) {
     if (e.target === this) {
         this.classList.add('hidden');
     }
+});
+
+// Galerías de ejemplo (personaliza las imágenes)
+const galleryData = {
+    calles: {
+        title: "Calles Empinadas",
+        images: [
+            "/Assets/calles1.jpg",
+            "/Assets/calles2.jpg",
+            "/Assets/calles3.jpg"
+        ]
+    },
+    paisajes: {
+        title: "Paisajes Naturales",
+        images: [
+            "/Assets/paisaje1.jpg",
+            "/Assets/paisaje2.jpg",
+            "/Assets/paisaje3.jpg"
+        ]
+    },
+    festividades: {
+        title: "Festividades Locales",
+        images: [
+            "/Assets/fiesta1.jpg",
+            "/Assets/fiesta2.jpg",
+            "/Assets/fiesta3.jpg"
+        ]
+    }
+};
+
+document.querySelectorAll('.open-gallery-modal').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const galleryKey = this.getAttribute('data-gallery');
+        const modal = document.getElementById('galleryModal');
+        const title = document.getElementById('galleryModalTitle');
+        const imagesContainer = document.getElementById('galleryModalImages');
+        const data = galleryData[galleryKey];
+
+        if (data) {
+            title.textContent = data.title;
+            imagesContainer.innerHTML = data.images.map(src =>
+                `<img src="${src}" alt="" class="h-32 w-32 object-cover rounded-lg shadow-md border border-gray-200">`
+            ).join('');
+        } else {
+            title.textContent = "Galería";
+            imagesContainer.innerHTML = "<p class='text-gray-500'>No hay imágenes disponibles.</p>";
+        }
+
+        modal.classList.remove('hidden');
+    });
+});
+
+document.getElementById('closeGalleryModal').addEventListener('click', function () {
+    document.getElementById('galleryModal').classList.add('hidden');
+});
+
+// Información expandida para el modal
+const infoData = {
+    historia: {
+        title: "Historia de Ciria",
+        image: "/Assets/castillo.jpg",
+        text: `
+      <p>Ciria tiene sus orígenes en la época medieval, cuando era un importante enclave defensivo en la frontera entre los reinos de Castilla y Aragón. Su castillo, hoy en ruinas, fue testigo de numerosas batallas y acontecimientos históricos. La villa conserva vestigios de su pasado en sus calles empedradas y edificios centenarios.</p>
+      <ul class="list-disc pl-6 mt-4">
+        <li>Fundación en el siglo XI</li>
+        <li>Castillo medieval y murallas</li>
+        <li>Tradición de fiestas patronales</li>
+      </ul>
+    `
+    },
+    arquitectura: {
+        title: "Arquitectura Tradicional",
+        image: "/Assets/calles1.jpg",
+        text: `
+      <p>Las construcciones de Ciria destacan por el uso de la piedra caliza local, creando un conjunto arquitectónico armonioso y bien conservado. Las casas tradicionales, con sus balcones de madera y tejados de teja árabe, son un ejemplo perfecto de la arquitectura soriana.</p>
+      <ul class="list-disc pl-6 mt-4">
+        <li>Casas de piedra y madera</li>
+        <li>Tejados de teja árabe</li>
+        <li>Plaza Mayor y edificios históricos</li>
+      </ul>
+    `
+    },
+    gastronomia: {
+        title: "Gastronomía Local",
+        image: "/Assets/gastronomia.jpg",
+        text: `
+      <p>La cocina de Ciria es un reflejo de la tradición castellana, con platos contundentes como el cordero asado, las migas pastoriles y las judías pintas. Los productos locales como las setas, la caza y los embutidos artesanales son la base de su rica gastronomía.</p>
+      <ul class="list-disc pl-6 mt-4">
+        <li>Cordero asado</li>
+        <li>Migas pastoriles</li>
+        <li>Embutidos y setas de temporada</li>
+      </ul>
+    `
+    }
+};
+
+document.querySelectorAll('.open-info-modal').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const infoKey = this.getAttribute('data-info');
+        const modal = document.getElementById('infoModal');
+        const title = document.getElementById('infoModalTitle');
+        const image = document.getElementById('infoModalImage');
+        const text = document.getElementById('infoModalText');
+        const data = infoData[infoKey];
+
+        if (data) {
+            title.textContent = data.title;
+            image.src = data.image;
+            image.alt = data.title;
+            text.innerHTML = data.text;
+        } else {
+            title.textContent = "Información";
+            image.src = "";
+            text.innerHTML = "<p class='text-gray-500'>No hay información disponible.</p>";
+        }
+
+        modal.classList.remove('hidden');
+    });
+});
+
+document.getElementById('closeInfoModal').addEventListener('click', function () {
+    document.getElementById('infoModal').classList.add('hidden');
 });

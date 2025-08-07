@@ -123,6 +123,7 @@
         </button>
 
         <div id="carousel" class="flex transition-transform duration-500" style="transform: translateX(0%)">
+
           <!-- Rest of the carousel slides remain the same -->
           <div class="min-w-full flex-shrink-0">
             <div class="relative h-[500px]">
@@ -147,6 +148,7 @@
               </div>
             </div>
           </div>
+
           <div class="min-w-full">
             <div class="relative h-[500px]">
               <img src="/Assets/389a00997a1ced56222580363c90f667.jpg" alt="Plaza Mayor"
@@ -158,11 +160,25 @@
               </div>
             </div>
           </div>
+
+          <div class="min-w-full">
+            <div class="relative h-[500px]">
+              <img src="/Assets/389a00997a1ced56222580363c9f667.jpg" alt="Puerto de La Bigornia"
+                class="w-full h-full object-cover object-top">
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
+                <h3 class="text-3xl font-bold text-white mb-2">Puerto de La Bigornia</h3>
+                <p class="text-white text-lg mb-4">Paso histórico fronterizo entre los reinos de Castilla y Aragón</p>
+              </div>
+            </div>
+          </div>
+
         </div>
         <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
           <button id="slide0" class="w-3 h-3 rounded-full bg-white"></button>
           <button id="slide1" class="w-3 h-3 rounded-full bg-white/50"></button>
           <button id="slide2" class="w-3 h-3 rounded-full bg-white/50"></button>
+          <button id="slide3" class="w-3 h-3 rounded-full bg-white/50"></button>
         </div>
       </div>
       <div class="absolute top-6 right-6 flex space-x-3">
@@ -195,9 +211,12 @@
           <div class="gallery-overlay absolute inset-0 flex flex-col justify-center items-center p-6">
             <h3 class="text-xl font-bold text-white mb-2">Calles Empinadas</h3>
             <p class="text-white text-center mb-4">Recorre las antiguas calles con sus características subidas</p>
+            <!-- Botón "Ver más" con atributo data-modal para identificar la galería -->
             <button
-              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap">Ver
-              más</button>
+              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap open-gallery-modal"
+              data-gallery="calles">
+              Ver más
+            </button>
           </div>
         </div>
 
@@ -209,8 +228,10 @@
             <h3 class="text-xl font-bold text-white mb-2">Paisajes Naturales</h3>
             <p class="text-white text-center mb-4">Entornos naturales de extraordinaria belleza que rodean la villa</p>
             <button
-              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap">Ver
-              más</button>
+              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap open-gallery-modal"
+              data-gallery="paisajes">
+              Ver más
+            </button>
           </div>
         </div>
 
@@ -225,7 +246,10 @@
             <p class="text-white text-center mb-4">Video de las tradicionales fiestas patronales de la Virgen de la
               Serna</p>
             <button
-              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap">Reproducir</button>
+              class="bg-white/20 hover:bg-white/30 text-white px-4 py-2 rounded-button backdrop-blur-sm transition-colors whitespace-nowrap open-gallery-modal"
+              data-gallery="festividades">
+              Ver más
+            </button>
           </div>
         </div>
 
@@ -251,7 +275,7 @@
             </li>
             <li
               class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
-              data-coords="41.6182251, -1.9666786"
+              data-coords="41.617876,-1.966736"
               data-description="Sede del ayuntamiento de Ciria, centro administrativo del pueblo."
               data-image="/Assets/ayuntamiento.jpg">
               <i class="ri-government-line text-lg mr-2"></i>
@@ -267,7 +291,7 @@
             </li>
             <li
               class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
-              data-coords="41.6185481, -1.9665669" data-description="Bar tradicional con terraza en la plaza."
+              data-coords="41.618548,-1.966567" data-description="Bar tradicional con terraza en la plaza."
               data-image="/Assets/barplaza.jpg">
               <i class="ri-restaurant-line text-lg mr-2"></i>
               <span>Bar - Cafetería La Plaza</span>
@@ -290,7 +314,7 @@
             </li>
             <li
               class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
-              data-coords="41.6230223, -1.9957273"
+              data-coords="41.62359,-1.99649"
               data-description="Ermita dedicada a la Virgen de la Serna, lugar de peregrinación local."
               data-image="/Assets/ermita.jpg">
               <i class="ri-ancient-pavilion-line text-lg mr-2"></i>
@@ -298,7 +322,7 @@
             </li>
             <li
               class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
-              data-coords="41.620845, -1.9691851"
+              data-coords="41.6210904,-1.9683969"
               data-description="Restos del castillo que defendía la villa en la Edad Media."
               data-image="/Assets/castillo.jpg">
               <i class="ri-castle-line text-lg mr-2"></i>
@@ -315,7 +339,7 @@
           </ul>
         </div>
         <!-- Mapa ampliado -->
-        <div class="md:w-4/5 h-[500px] flex items-center justify-center">
+        <div id="mapContainer" class="md:w-4/5 h-[500px] flex items-center justify-center transition-all duration-300">
           <iframe id="mapIframe"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3000.0!2d-2.0000!3d41.5800!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd441f0000000000%3A0x0!2sCiria%2C%20Soria!5e0!3m2!1ses!2ses!4v1678901234567!5m2!1ses!2ses"
             width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
@@ -363,7 +387,8 @@
             numerosas batallas y acontecimientos históricos.</p>
           <div class="text-center">
             <button
-              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap">
+              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap open-info-modal"
+              data-info="historia">
               Leer más
               <div class="w-5 h-5 flex items-center justify-center ml-1">
                 <i class="ri-arrow-right-line"></i>
@@ -383,7 +408,8 @@
             madera y tejados de teja árabe, son un ejemplo perfecto de la arquitectura soriana.</p>
           <div class="text-center">
             <button
-              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap">
+              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap open-info-modal"
+              data-info="arquitectura">
               Leer más
               <div class="w-5 h-5 flex items-center justify-center ml-1">
                 <i class="ri-arrow-right-line"></i>
@@ -403,7 +429,8 @@
             setas, la caza y los embutidos artesanales son la base de su rica gastronomía.</p>
           <div class="text-center">
             <button
-              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap">
+              class="text-primary hover:text-blue-700 font-medium flex items-center justify-center mx-auto whitespace-nowrap open-info-modal"
+              data-info="gastronomia">
               Leer más
               <div class="w-5 h-5 flex items-center justify-center ml-1">
                 <i class="ri-arrow-right-line"></i>
@@ -548,26 +575,30 @@
           </ul>
         </div>
         <div>
-          <h3 class="text-lg font-bold mb-6">Datos del Ayuntamiento</h3>
+          <h3 class="text-lg font-bold mb-6">Datos de Interés</h3>
           <ul class="space-y-3">
             <li class="flex items-start">
               <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
                 <i class="ri-map-pin-line"></i>
               </div>
-              <span class="text-gray-400">Plaza Mayor s/n, 42138 Ciria, Soria</span>
+              <span class="text-gray-400"> <b>Ayuntamiento:</b> <br></span>
             </li>
+            <ul class="ml-8">
+              <li class="flex items-center"> <span class="text-gray-400">Plaza Mayor s/n, 42138 Ciria, Soria</span></li>
+              <li class="flex items-center"> <span class="text-gray-400">Teléfono: +34 975 391 007</span></li>
+            </ul>
             <li class="flex items-center">
               <div class="w-5 h-5 flex items-center justify-center mr-3">
-                <i class="ri-phone-line"></i>
+                <i class="ri-hospital-line"></i><span></span>
               </div>
-              <span class="text-gray-400">+34 975 391 007</span>
+              <span class="text-gray-400"><b>Centro de Salud de Ólvega:</b></span>
             </li>
-            <li class="flex items-center">
-              <div class="w-5 h-5 flex items-center justify-center mr-3">
-                <i class="ri-time-line"></i>
-              </div>
-              <span class="text-gray-400">Oficina de Turismo: L-V 10:00 - 14:00</span>
-            </li>
+            <ul class="ml-8">
+              <li class="flex items-center"><span class="text-gray-400">Plaza de la Constitucion 1, 42110 Ólvega,
+                  Soria</span></li>
+              <li class="flex items-center"><span class="text-gray-400">Horario: L-V 08:00-15:00</span></li>
+              <li class="flex items-center"><span class="text-gray-400">Teléfono: +34 976 645 589</span></li>
+            </ul>
           </ul>
         </div>
         <div>
@@ -595,6 +626,35 @@
       </div>
     </div>
   </footer>
+  <!-- Modal Galería Multimedia -->
+  <div id="galleryModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl w-[90vw] max-w-4xl h-[70vh] flex flex-col relative overflow-hidden">
+      <button id="closeGalleryModal"
+        class="absolute top-4 right-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-gray-700 hover:text-white z-10">
+        <i class="ri-close-line text-2xl"></i>
+      </button>
+      <div class="p-8 flex-1 flex flex-col">
+        <h3 id="galleryModalTitle" class="text-2xl font-bold mb-4 text-primary"></h3>
+        <div id="galleryModalImages" class="flex flex-wrap gap-4 justify-center overflow-auto">
+          <!-- Aquí se insertarán las imágenes dinámicamente -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Información Expandida -->
+  <div id="infoModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-2xl w-[90vw] max-w-2xl h-[70vh] flex flex-col relative overflow-hidden">
+      <button id="closeInfoModal"
+        class="absolute top-4 right-4 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-gray-700 hover:text-white z-10">
+        <i class="ri-close-line text-2xl"></i>
+      </button>
+      <div class="p-8 flex-1 flex flex-col overflow-auto">
+        <h3 id="infoModalTitle" class="text-2xl font-bold mb-4 text-primary"></h3>
+        <img id="infoModalImage" src="" alt="" class="w-full h-48 object-cover rounded-lg mb-6 shadow-md">
+        <div id="infoModalText" class="text-gray-700 text-lg"></div>
+      </div>
+    </div>
+  </div>
   <script src="script.js"></script>
 </body>
 
