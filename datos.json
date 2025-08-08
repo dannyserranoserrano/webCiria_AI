@@ -1,0 +1,59 @@
+{
+    "legalTexts": {
+        "privacidad": {
+            "title": "Política de Privacidad",
+            "text": "<p>En Villa de Ciria nos comprometemos a proteger su privacidad. Sus datos personales serán tratados de acuerdo con la normativa vigente y solo se utilizarán para responder a sus consultas o mejorar nuestros servicios. No compartimos información con terceros sin su consentimiento. Puede ejercer sus derechos de acceso, rectificación y cancelación enviando un correo a villadeciria@gmail.com.</p>"
+        },
+        "terminos": {
+            "title": "Términos y Condiciones",
+            "text": "<p>El uso de este sitio web implica la aceptación de los presentes términos y condiciones. El contenido es informativo y puede estar sujeto a cambios sin previo aviso. Queda prohibida la reproducción total o parcial de los contenidos sin autorización expresa. El usuario se compromete a hacer un uso adecuado del sitio y a no emplearlo para actividades ilícitas.</p>"
+        },
+        "aviso": {
+            "title": "Aviso Legal",
+            "text": "<p>El dominio villadeciria.com así como los subdominios asociados son propiedad privada ajena al ayuntamiento de Ciria. Todos los derechos reservados. La información contenida en esta web ha sido elaborada con fines divulgativos. Para cualquier consulta o reclamación puede contactar en villadeciria@gmail.com. El acceso y uso de la web implica la aceptación de este aviso legal.</p>"
+        }
+    },
+    "infoData": {
+        "historia": {
+            "title": "Historia de Ciria",
+            "image": "/Assets/castillo.jpg",
+            "text": "<p>Ciria tiene sus orígenes en la época medieval, cuando era un importante enclave defensivo en la frontera entre los reinos de Castilla y Aragón. Su castillo, hoy en ruinas, fue testigo de numerosas batallas y acontecimientos históricos. La villa conserva vestigios de su pasado en sus calles empedradas y edificios centenarios.</p><ul class='list-disc pl-6 mt-4'><li>Fundación en el siglo XI</li><li>Castillo medieval y murallas</li><li>Tradición de fiestas patronales</li></ul>"
+        },
+        "arquitectura": {
+            "title": "Arquitectura Tradicional",
+            "image": "/Assets/calles1.jpg",
+            "text": "<p>Las construcciones de Ciria destacan por el uso de la piedra caliza local, creando un conjunto arquitectónico armonioso y bien conservado. Las casas tradicionales, con sus balcones de madera y tejados de teja árabe, son un ejemplo perfecto de la arquitectura soriana.</p><ul class='list-disc pl-6 mt-4'><li>Casas de piedra y madera</li><li>Tejados de teja árabe</li><li>Plaza Mayor y edificios históricos</li></ul>"
+        },
+        "gastronomia": {
+            "title": "Gastronomía Local",
+            "image": "/Assets/gastronomia.jpg",
+            "text": "<p>La cocina de Ciria es un reflejo de la tradición castellana, con platos contundentes como el cordero asado, las migas pastoriles y las judías pintas. Los productos locales como las setas, la caza y los embutidos artesanales son la base de su rica gastronomía.</p><ul class='list-disc pl-6 mt-4'><li>Cordero asado</li><li>Migas pastoriles</li><li>Embutidos y setas de temporada</li></ul>"
+        }
+    },
+    "galleryData": {
+        "calles": {
+            "title": "Calles Empinadas",
+            "images": [
+                "/Assets/calles1.jpg",
+                "/Assets/calles2.jpg",
+                "/Assets/calles3.jpg"
+            ]
+        },
+        "paisajes": {
+            "title": "Paisajes Naturales",
+            "images": [
+                "/Assets/paisaje1.jpg",
+                "/Assets/paisaje2.jpg",
+                "/Assets/paisaje3.jpg"
+            ]
+        },
+        "festividades": {
+            "title": "Festividades Locales",
+            "images": [
+                "/Assets/fiesta1.jpg",
+                "/Assets/fiesta2.jpg",
+                "/Assets/fiesta3.jpg"
+            ]
+        }
+    }
+}

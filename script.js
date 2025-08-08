@@ -1,3 +1,19 @@
+// Cargar datos desde datos.json
+let legalTexts = {};
+let infoData = {};
+let galleryData = {};
+
+fetch('datos.json')
+    .then(response => response.json())
+    .then(data => {
+        legalTexts = data.legalTexts;
+        infoData = data.infoData;
+        galleryData = data.galleryData;
+    })
+    .catch(err => {
+        console.error('Error cargando datos.json:', err);
+    });
+
 document.addEventListener('DOMContentLoaded', function () {
     // Modal and smooth scroll functionality
     const exploreButton = document.getElementById('exploreButton');
@@ -82,8 +98,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Carousel functionality
 document.addEventListener('DOMContentLoaded', function () {
-    // Carousel functionality
+
     const carousel = document.getElementById('carousel');
     const prevButton = document.getElementById('prevSlide');
     const nextButton = document.getElementById('nextSlide');
@@ -177,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Mapa interactivo y vista 360°
 document.addEventListener('DOMContentLoaded', function () {
     const toggleBtn = document.getElementById('toggle360');
     const mapIframe = document.getElementById('mapIframe');
@@ -233,33 +251,6 @@ document.getElementById('mapPopup').addEventListener('click', function (e) {
 });
 
 // Galerías de ejemplo (personaliza las imágenes)
-const galleryData = {
-    calles: {
-        title: "Calles Empinadas",
-        images: [
-            "/Assets/calles1.jpg",
-            "/Assets/calles2.jpg",
-            "/Assets/calles3.jpg"
-        ]
-    },
-    paisajes: {
-        title: "Paisajes Naturales",
-        images: [
-            "/Assets/paisaje1.jpg",
-            "/Assets/paisaje2.jpg",
-            "/Assets/paisaje3.jpg"
-        ]
-    },
-    festividades: {
-        title: "Festividades Locales",
-        images: [
-            "/Assets/fiesta1.jpg",
-            "/Assets/fiesta2.jpg",
-            "/Assets/fiesta3.jpg"
-        ]
-    }
-};
-
 document.querySelectorAll('.open-gallery-modal').forEach(btn => {
     btn.addEventListener('click', function () {
         const galleryKey = this.getAttribute('data-gallery');
@@ -287,45 +278,6 @@ document.getElementById('closeGalleryModal').addEventListener('click', function 
 });
 
 // Información expandida para el modal
-const infoData = {
-    historia: {
-        title: "Historia de Ciria",
-        image: "/Assets/castillo.jpg",
-        text: `
-      <p>Ciria tiene sus orígenes en la época medieval, cuando era un importante enclave defensivo en la frontera entre los reinos de Castilla y Aragón. Su castillo, hoy en ruinas, fue testigo de numerosas batallas y acontecimientos históricos. La villa conserva vestigios de su pasado en sus calles empedradas y edificios centenarios.</p>
-      <ul class="list-disc pl-6 mt-4">
-        <li>Fundación en el siglo XI</li>
-        <li>Castillo medieval y murallas</li>
-        <li>Tradición de fiestas patronales</li>
-      </ul>
-    `
-    },
-    arquitectura: {
-        title: "Arquitectura Tradicional",
-        image: "/Assets/calles1.jpg",
-        text: `
-      <p>Las construcciones de Ciria destacan por el uso de la piedra caliza local, creando un conjunto arquitectónico armonioso y bien conservado. Las casas tradicionales, con sus balcones de madera y tejados de teja árabe, son un ejemplo perfecto de la arquitectura soriana.</p>
-      <ul class="list-disc pl-6 mt-4">
-        <li>Casas de piedra y madera</li>
-        <li>Tejados de teja árabe</li>
-        <li>Plaza Mayor y edificios históricos</li>
-      </ul>
-    `
-    },
-    gastronomia: {
-        title: "Gastronomía Local",
-        image: "/Assets/gastronomia.jpg",
-        text: `
-      <p>La cocina de Ciria es un reflejo de la tradición castellana, con platos contundentes como el cordero asado, las migas pastoriles y las judías pintas. Los productos locales como las setas, la caza y los embutidos artesanales son la base de su rica gastronomía.</p>
-      <ul class="list-disc pl-6 mt-4">
-        <li>Cordero asado</li>
-        <li>Migas pastoriles</li>
-        <li>Embutidos y setas de temporada</li>
-      </ul>
-    `
-    }
-};
-
 document.querySelectorAll('.open-info-modal').forEach(btn => {
     btn.addEventListener('click', function () {
         const infoKey = this.getAttribute('data-info');
@@ -352,4 +304,29 @@ document.querySelectorAll('.open-info-modal').forEach(btn => {
 
 document.getElementById('closeInfoModal').addEventListener('click', function () {
     document.getElementById('infoModal').classList.add('hidden');
+});
+
+document.querySelectorAll('.open-legal-modal').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const key = this.getAttribute('data-legal');
+        const modal = document.getElementById('legalModal');
+        const title = document.getElementById('legalModalTitle');
+        const text = document.getElementById('legalModalText');
+        const data = legalTexts[key];
+
+        if (data) {
+            title.textContent = data.title;
+            text.innerHTML = data.text;
+        } else {
+            title.textContent = "Información Legal";
+            text.innerHTML = "<p class='text-gray-500'>No hay información disponible.</p>";
+        }
+
+        modal.classList.remove('hidden');
+    });
+});
+
+document.getElementById('closeLegalModal').addEventListener('click', function () {
+    document.getElementById('legalModal').classList.add('hidden');
 });
