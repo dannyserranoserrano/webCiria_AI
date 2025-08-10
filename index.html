@@ -10,18 +10,66 @@
   <meta name="keywords"
     content="Villa de Ciria, Ciria, Soria, turismo rural, historia, gastronomía, actividades, naturaleza, España, pueblos con encanto">
   <meta name="author" content="Villa de Ciria">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="google" content="notranslate">
+  <meta name="language" content="es">
+  <meta name="geo.region" content="ES-SO">
+  <meta name="geo.placename" content="Ciria">
+  <meta name="geo.position" content="41.6188;-1.9657">
+  <meta name="ICBM" content="41.6188, -1.9657">
+  <link rel="canonical" href="https://www.villadeciria.com/">
+  <link rel="alternate" href="https://www.villadeciria.com/" hreflang="es" />
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Villa de Ciria">
   <meta property="og:title" content="Villa de Ciria - Descubre la magia de nuestro pueblo">
   <meta property="og:description"
     content="Explora la historia, paisajes y actividades de la Villa de Ciria, un tesoro escondido en Soria.">
   <meta property="og:image"
     content="https://readdy.ai/api/search-image?query=Beautiful%20panoramic%20view%20of%20Ciria%20village%20in%20Spain%20with%20ancient%20stone%20buildings%2C%20church%20tower%2C%20and%20mountains%20in%20the%20background.%20Dramatic%20sky%20with%20soft%20clouds.%20Rural%20Spanish%20countryside%20landscape%20with%20traditional%20architecture.%20Warm%20evening%20light.%20High%20quality%2C%20photorealistic.&width=1920&height=1080&seq=1&orientation=landscape">
-  <meta property="og:url" content="https://www.villaciria.es">
+  <meta property="og:url" content="https://www.villadeciria.com">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Villa de Ciria - Descubre la magia de nuestro pueblo">
   <meta name="twitter:description"
     content="Explora la historia, paisajes y actividades de Villa de Ciria, un tesoro escondido en Soria.">
   <meta name="twitter:image"
     content="https://readdy.ai/api/search-image?query=Beautiful%20panoramic%20view%20of%20Ciria%20village%20in%20Spain%20with%20ancient%20stone%20buildings%2C%20church%20tower%2C%20and%20mountains%20in%20the%20background.%20Dramatic%20sky%20with%20soft%20clouds.%20Rural%20Spanish%20countryside%20landscape%20with%20traditional%20architecture.%20Warm%20evening%20light.%20High%20quality%2C%20photorealistic.&width=1920&height=1080&seq=1&orientation=landscape">
+  <meta name="twitter:site" content="@VillaDeCiria">
+  <meta name="twitter:creator" content="@VillaDeCiria">
+  <!-- Favicon y manifest -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <!-- Scripts de seguimiento y análisis -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0');
+    fbq('init', 'YOUR_PIXEL_ID');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1" />
+  </noscript>
+  <!-- Fin de los scripts de seguimiento -->
   <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -352,6 +400,13 @@
               <i class="ri-water-flash-line text-lg mr-2"></i>
               <span>Río Manubles</span>
             </li>
+            <li
+              class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+              data-coords="41.626725, -1.9647867"
+              data-description="Manantial y paraje natural con vistas panorámicas del cañon del Río Manubles. Fuente que abastece al pueblo de agua.."
+              data-image="/Assets/elOjo.jpg">
+              <i class="ri-restaurant-line text-lg mr-2"></i>
+              <span>Manantial y paraje El Ojo</span>
           </ul>
         </div>
         <!-- Mapa ampliado -->
