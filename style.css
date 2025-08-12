@@ -7,7 +7,7 @@ body {
 }
 
 .hero-section {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://readdy.ai/api/search-image?query=Beautiful%20panoramic%20view%20of%20Ciria%20village%20in%20Spain%20with%20ancient%20stone%20buildings%2C%20church%20tower%2C%20and%20mountains%20in%20the%20background.%20Dramatic%20sky%20with%20soft%20clouds.%20Rural%20Spanish%20countryside%20landscape%20with%20traditional%20architecture.%20Warm%20evening%20light.%20High%20quality%2C%20photorealistic.&width=1920&height=1080&seq=1&orientation=landscape');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/Assets/Castillo/DJI_0846.webp');
     background-size: cover;
     background-position: center;
     height: 100vh;

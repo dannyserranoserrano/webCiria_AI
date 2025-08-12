@@ -16,7 +16,7 @@
     "infoData": {
         "historia": {
             "title": "Historia de Ciria",
-            "image": "/Assets/castillo.jpg",
+            "image": "/Assets/Castillo/DJI_0848.webp",
             "text": "<p>Ciria tiene sus orígenes en la época medieval, cuando era un importante enclave defensivo en la frontera entre los reinos de Castilla y Aragón. Su castillo, hoy en ruinas, fue testigo de numerosas batallas y acontecimientos históricos. La villa conserva vestigios de su pasado en sus calles empedradas y edificios centenarios.</p><ul class='list-disc pl-6 mt-4'><li>Fundación en el siglo XI</li><li>Castillo medieval y murallas</li><li>Tradición de fiestas patronales</li></ul>"
         },
         "arquitectura": {
@@ -42,17 +42,21 @@
         "paisajes": {
             "title": "Paisajes Naturales",
             "images": [
-                "/Assets/paisaje1.jpg",
-                "/Assets/paisaje2.jpg",
-                "/Assets/paisaje3.jpg"
+                "/Assets/Paisajes/IMG_20250316_122142.webp",
+                "/Assets/Paisajes/IMG_20250417_130456.webp",
+                "/Assets/Paisajes/IMG_20250417_130509.webp",
+                "/Assets/Paisajes/IMG_20250417_182821.webp",
+                "/Assets/Paisajes/IMG_20250417_190704.webp"
             ]
         },
         "festividades": {
             "title": "Festividades Locales",
             "images": [
-                "/Assets/fiesta1.jpg",
-                "/Assets/fiesta2.jpg",
-                "/Assets/fiesta3.jpg"
+                "/Assets/Festividades/IMG_20250420_115930.webp",
+                "/Assets/Festividades/IMG_20250420_120127.webp",
+                "/Assets/Festividades/IMG_20250420_120319.webp",
+                "/Assets/Festividades/IMG_20250420_121130.webp",
+                "/Assets/Festividades/IMG_20250420_121215.webp"
             ]
         }
     }
