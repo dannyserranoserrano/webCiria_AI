@@ -1,4 +1,30 @@
 {
+    "destacados": [
+        {
+            "img": "/Assets/Iglesia/IMG_1004.webp",
+            "alt": "Iglesia de Santa María La Mayor",
+            "title": "Iglesia de Santa María La Mayor",
+            "desc": "Templo románico del siglo XII con detalles arquitectónicos únicos"
+        },
+        {
+            "img": "/Assets/Castillo/IMG_20250202_124604.webp",
+            "alt": "Castillo de Ciria",
+            "title": "Castillo de Ciria",
+            "desc": "Fortaleza medieval con impresionantes vistas del valle"
+        },
+        {
+            "img": "/Assets/Iglesia/plazaMayor.webp",
+            "alt": "Plaza Mayor de Ciria",
+            "title": "Plaza Mayor de Ciria",
+            "desc": "El corazón del pueblo, donde se encuentra la vida social y cultural"
+        },
+        {
+            "img": "/Assets/Castillo/bigornia.webp",
+            "alt": "Puerto de La Bigornia",
+            "title": "Puerto de La Bigornia",
+            "desc": "Un hermoso paraje natural ideal para el senderismo y la observación de aves. Paso histórico fronterizo entre los reinos de Castilla y Aragón"
+        }
+    ],
     "legalTexts": {
         "privacidad": {
             "title": "Política de Privacidad",

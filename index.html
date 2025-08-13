@@ -110,71 +110,19 @@
         <button
           class="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
           id="prevSlide">
-          <i class="ri-arrow-left-line"></i>
+          ‹
         </button>
         <button
           class="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center text-white hover:bg-white/30 transition-colors"
           id="nextSlide">
-          <i class="ri-arrow-right-line"></i>
+          ›
         </button>
 
         <div id="carousel" class="flex transition-transform duration-500" style="transform: translateX(0%)">
-
-          <!-- Rest of the carousel slides remain the same -->
-          <div class="min-w-full flex-shrink-0">
-            <div class="relative h-[500px]">
-              <img src="/Assets/Iglesia/IMG_1004.webp" alt="Iglesia de Santa María La Mayor"
-                class="w-full h-full object-cover object-top">
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
-                <h3 class="text-3xl font-bold text-white mb-2">Iglesia de Santa María La Mayor</h3>
-                <p class="text-white text-lg mb-4">Templo románico del siglo XII con detalles arquitectónicos únicos</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="min-w-full">
-            <div class="relative h-[500px]">
-              <img src="/Assets/Castillo/IMG_20250202_124604.webp" alt="Castillo de Ciria"
-                class="w-full h-full object-cover object-top">
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
-                <h3 class="text-3xl font-bold text-white mb-2">Castillo de Ciria</h3>
-                <p class="text-white text-lg mb-4">Fortaleza medieval con impresionantes vistas del valle</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="min-w-full">
-            <div class="relative h-[500px]">
-              <img src="/Assets/389a00997a1ced56222580363c90f667.jpg" alt="Plaza Mayor"
-                class="w-full h-full object-cover object-top">
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
-                <h3 class="text-3xl font-bold text-white mb-2">Plaza Mayor</h3>
-                <p class="text-white text-lg mb-4">Corazón histórico de la villa con su histórico frontón</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="min-w-full">
-            <div class="relative h-[500px]">
-              <img src="/Assets/389a00997a1ced56222580363c9f667.jpg" alt="Puerto de La Bigornia"
-                class="w-full h-full object-cover object-top">
-              <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
-                <h3 class="text-3xl font-bold text-white mb-2">Puerto de La Bigornia</h3>
-                <p class="text-white text-lg mb-4">Paso histórico fronterizo entre los reinos de Castilla y Aragón</p>
-              </div>
-            </div>
-          </div>
-
+          <!-- Los slides se insertarán aquí dinámicamente -->
         </div>
-        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          <button id="slide0" class="w-3 h-3 rounded-full bg-white"></button>
-          <button id="slide1" class="w-3 h-3 rounded-full bg-white/50"></button>
-          <button id="slide2" class="w-3 h-3 rounded-full bg-white/50"></button>
-          <button id="slide3" class="w-3 h-3 rounded-full bg-white/50"></button>
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2" id="carouselIndicators">
+          <!-- Los botones se insertarán aquí dinámicamente -->
         </div>
       </div>
       <div class="absolute top-6 right-6 flex space-x-3">
@@ -576,7 +524,11 @@
               <span class="text-gray-400"> <b>Ayuntamiento:</b> <br></span>
             </li>
             <ul class="ml-8">
-              <li class="flex items-center"> <span class="text-gray-400">Plaza Mayor s/n, 42138 Ciria, Soria</span></li>
+              <li class="flex items-center">
+                <a href="https://maps.app.goo.gl/MCD5Dmpy1ixsSATh7" target="_blank" rel="noopener">
+                  <span class="text-gray-400">Plaza Mayor s/n, 42138 Ciria, Soria</span>
+                </a>
+              </li>
               <li class="flex items-center"> <span class="text-gray-400">Teléfono: <a href="tel:+34975391007"></a>+34
                   975 391 007</a></span></li>
             </ul>
@@ -587,8 +539,11 @@
               <span class="text-gray-400"><b>Centro de Salud de Ólvega:</b></span>
             </li>
             <ul class="ml-8">
-              <li class="flex items-center"><span class="text-gray-400">Plaza de la Constitucion 1, 42110 Ólvega,
-                  Soria</span></li>
+              <li class="flex items-center">
+                <a href="https://maps.app.goo.gl/w7DphgpgxzUqmwrC6" target="_blank" rel="noopener">
+                  <span class="text-gray-400">Plaza de la Constitucion 1, 42110 Ólvega,Soria</span>
+                </a>
+              </li>
               <li class="flex items-center"><span class="text-gray-400">Horario: L-V 08:00-15:00</span></li>
               <li class="flex items-center"><span class="text-gray-400">Teléfono: <a href="tel:+34976645589">+34 976 645
                     589</a></span></li>
@@ -616,13 +571,9 @@
             data-legal="aviso">Aviso Legal</a>
         </div>
       </div>
-      <div class="mt-3 pt-3 flex flex-col md:flex-row justify-between items-center">
-        <p class="text-gray-500 text-sm mb-4 md:mb-0">Nota: El dominio villadeciria.com así como los subdominios
-          asociados
-          están protegidos por derechos de autor y son propiedad privada ajena al ayuntamiento de Ciria.</p>
-      </div>
     </div>
   </footer>
+
   <!-- Modal Galería Multimedia -->
   <div id="galleryModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
     <div class="bg-white rounded-lg shadow-2xl w-[90vw] max-w-4xl h-[70vh] flex flex-col relative overflow-hidden">
@@ -638,6 +589,19 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal Imagen Completa -->
+  <div id="imageFullModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[999] hidden">
+    <div class="relative">
+      <button id="closeImageFullModal"
+        class="absolute top-2 right-2 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-gray-700 hover:text-white z-10">
+        <i class="ri-close-line text-2xl"></i>
+      </button>
+      <img id="imageFullModalImg" src="" alt=""
+        class="max-w-[90vw] max-h-[80vh] rounded-lg shadow-2xl border border-white">
+    </div>
+  </div>
+
   <!-- Modal Información Expandida -->
   <div id="infoModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
     <div class="bg-white rounded-lg shadow-2xl w-[90vw] max-w-2xl h-[70vh] flex flex-col relative overflow-hidden">
@@ -652,6 +616,7 @@
       </div>
     </div>
   </div>
+
   <!-- Modal Legal -->
   <div id="legalModal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
     <div class="bg-white rounded-lg shadow-2xl w-[90vw] max-w-2xl flex flex-col relative overflow-hidden">
@@ -665,6 +630,26 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal Destacado Completo -->
+  <div id="destacadoFullModal" class="fixed inset-0 bg-black/80 flex items-center justify-center z-[999] hidden">
+    <div class="relative max-w-3xl w-full mx-4">
+      <button id="closeDestacadoFullModal"
+        class="absolute top-2 right-2 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center hover:bg-primary transition-colors text-gray-700 hover:text-white z-10">
+        <i class="ri-close-line text-2xl"></i>
+      </button>
+      <div class="relative">
+        <img id="destacadoFullModalImg" src="" alt=""
+          class="w-full max-h-[80vh] object-cover rounded-lg shadow-2xl border border-white">
+        <div
+          class="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 to-transparent p-8 pointer-events-none">
+          <h3 id="destacadoFullModalTitle" class="text-3xl font-bold text-white mb-2"></h3>
+          <p id="destacadoFullModalDesc" class="text-white text-lg"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="script.js"></script>
 </body>
 
