@@ -3,6 +3,7 @@ let legalTexts = {};
 let infoData = {};
 let galleryData = {};
 
+// Cargar datos desde datos.json
 fetch('datos.json')
     .then(response => response.json())
     .then(data => {
@@ -14,6 +15,7 @@ fetch('datos.json')
         console.error('Error cargando datos.json:', err);
     });
 
+// Funcionalidad del modal de bienvenida y desplazamiento suave
 document.addEventListener('DOMContentLoaded', function () {
     // Modal and smooth scroll functionality
     const exploreButton = document.getElementById('exploreButton');
