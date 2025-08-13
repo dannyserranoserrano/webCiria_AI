@@ -1,15 +1,47 @@
-// Cargar datos desde datos.json
 let legalTexts = {};
 let infoData = {};
 let galleryData = {};
 
-// Cargar datos desde datos.json
+// Cargar datos desde datos.json y generar destacados y modales
 fetch('datos.json')
     .then(response => response.json())
     .then(data => {
         legalTexts = data.legalTexts;
         infoData = data.infoData;
         galleryData = data.galleryData;
+
+        // --- PUNTOS DE INTERÉS DINÁMICOS ---
+        const mapPoints = data.mapPoints || [];
+        const interestColumn = document.getElementById('interestColumn');
+        if (interestColumn && mapPoints.length) {
+            const ul = interestColumn.querySelector('ul');
+            ul.innerHTML = mapPoints.map(point => `
+                <li
+                  class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+                  data-coords="${point.coords}"
+                  data-description="${point.description}"
+                  data-image="${point.image}">
+                  <i class="${point.icon || 'ri-map-pin-line'} text-lg mr-2"></i>
+                  <span>${point.name}</span>
+                </li>
+            `).join('');
+            // Listener para abrir el modal y centrar el mapa
+            ul.querySelectorAll('li').forEach(function (item) {
+                item.addEventListener('click', function () {
+                    const coords = this.getAttribute('data-coords');
+                    const [lat, lng] = coords.split(',');
+                    const mapIframe = document.getElementById('mapIframe');
+                    if (mapIframe && lat && lng) {
+                        mapIframe.src = `https://www.google.com/maps?q=${lat},${lng}&hl=es&z=17&output=embed`;
+                    }
+                    document.getElementById('popupTitle').textContent = this.querySelector('span').textContent;
+                    document.getElementById('popupDescription').textContent = this.getAttribute('data-description');
+                    document.getElementById('popupImage').src = this.getAttribute('data-image');
+                    document.getElementById('popupImage').alt = this.querySelector('span').textContent;
+                    document.getElementById('mapPopup').classList.remove('hidden');
+                });
+            });
+        }
 
         // Crear slides de Lugares Destacados dinámicamente
         const destacados = data.destacados || [];
@@ -19,42 +51,21 @@ fetch('datos.json')
             carousel.innerHTML = destacados.map(destacado => `
                 <div class="min-w-full flex-shrink-0 destacado-slide">
                   <div class="relative h-[500px] cursor-pointer">
-                    <img src="${destacado.img}" alt="${destacado.alt}" class="w-full h-full object-cover object-top">
+                    <img src="${destacado.img || ''}" alt="${destacado.alt || ''}" class="w-full h-full object-cover object-top">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex flex-col justify-end p-10">
-                      <h3 class="text-3xl font-bold text-white mb-2">${destacado.title}</h3>
-                      <p class="text-white text-lg mb-4">${destacado.desc}</p>
+                      <h3 class="text-3xl font-bold text-white mb-2">${destacado.title || ''}</h3>
+                      <p class="text-white text-lg mb-4">${destacado.desc || ''}</p>
                     </div>
                   </div>
                 </div>
             `).join('');
-
-            // Indicadores dinámicos
             indicatorsContainer.innerHTML = destacados.map((_, i) =>
                 `<button id="slide${i}" class="w-3 h-3 rounded-full ${i === 0 ? 'bg-white' : 'bg-white/50'}"></button>`
             ).join('');
         }
 
-        // Modal para Lugares Destacados
+        // Carrusel funcionalidad
         setTimeout(() => {
-            document.querySelectorAll('#carousel .destacado-slide').forEach((slide) => {
-                slide.addEventListener('click', function () {
-                    const img = slide.querySelector('img');
-                    const title = slide.querySelector('h3');
-                    const desc = slide.querySelector('p');
-                    const modal = document.getElementById('destacadoFullModal');
-                    const modalImg = document.getElementById('destacadoFullModalImg');
-                    const modalTitle = document.getElementById('destacadoFullModalTitle');
-                    const modalDesc = document.getElementById('destacadoFullModalDesc');
-
-                    modalImg.src = img.src;
-                    modalImg.alt = img.alt || '';
-                    modalTitle.textContent = title ? title.textContent : '';
-                    modalDesc.textContent = desc ? desc.textContent : '';
-                    modal.classList.remove('hidden');
-                });
-            });
-
-            // Carousel functionality dinámica
             let currentSlide = 0;
             const totalSlides = destacados.length;
             const slideButtons = Array.from(indicatorsContainer.querySelectorAll('button'));
@@ -72,210 +83,203 @@ fetch('datos.json')
             }
 
             slideButtons.forEach((button, index) => {
-                button.addEventListener('click', () => {
-                    updateSlides(index);
+                button.addEventListener('click', () => updateSlides(index));
+            });
+
+            prevButton?.addEventListener('click', () => updateSlides(currentSlide - 1));
+            nextButton?.addEventListener('click', () => updateSlides(currentSlide + 1));
+
+            let autoAdvance = setInterval(() => updateSlides(currentSlide + 1), 5000);
+
+            updateSlides(0);
+
+            // Modal imagen destacado
+            document.querySelectorAll('#carousel .destacado-slide').forEach(slide => {
+                slide.addEventListener('click', function () {
+                    const img = slide.querySelector('img');
+                    const title = slide.querySelector('h3');
+                    const desc = slide.querySelector('p');
+                    openImageModal({
+                        src: img.src,
+                        alt: img.alt,
+                        title: title?.textContent || '',
+                        desc: desc?.textContent || ''
+                    });
+                    clearInterval(autoAdvance);
                 });
             });
 
-            prevButton?.addEventListener('click', () => {
-                updateSlides(currentSlide - 1);
+            // Reactivar autoavance al cerrar modal imagen
+            document.getElementById('closeImageFullModal')?.addEventListener('click', () => {
+                closeImageModal();
+                autoAdvance = setInterval(() => updateSlides(currentSlide + 1), 5000);
             });
-
-            nextButton?.addEventListener('click', () => {
-                updateSlides(currentSlide + 1);
+            document.getElementById('imageFullModal')?.addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeImageModal();
+                    autoAdvance = setInterval(() => updateSlides(currentSlide + 1), 5000);
+                }
             });
-
-            setInterval(() => {
-                updateSlides(currentSlide + 1);
-            }, 5000);
-
-            updateSlides(0); // Inicializa el carrusel
         }, 300);
     })
     .catch(err => {
         console.error('Error cargando datos.json:', err);
     });
 
-// Funcionalidad del modal de bienvenida y desplazamiento suave
+// Modal de bienvenida y desplazamiento suave
 document.addEventListener('DOMContentLoaded', function () {
-    // Modal and smooth scroll functionality
     const exploreButton = document.getElementById('exploreButton');
     const welcomeModal = document.getElementById('welcomeModal');
-    const closeModal = document.getElementById('closeModal');
+    const closeModalBtn = document.getElementById('closeModal');
     const goToDestacados = document.getElementById('goToDestacados');
     const goToActividades = document.getElementById('goToActividades');
+
     function smoothScrollTo(elementId) {
         const element = document.getElementById(elementId);
-        if (element) {
-            element.scrollIntoView({ behavior: 'smooth' });
-        }
+        if (element) element.scrollIntoView({ behavior: 'smooth' });
     }
-    exploreButton.addEventListener('click', () => {
+    exploreButton?.addEventListener('click', () => {
         welcomeModal.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
     });
-    closeModal.addEventListener('click', () => {
+    closeModalBtn?.addEventListener('click', () => {
         welcomeModal.classList.add('hidden');
         document.body.style.overflow = 'auto';
     });
-    goToDestacados.addEventListener('click', () => {
+    goToDestacados?.addEventListener('click', () => {
         welcomeModal.classList.add('hidden');
         document.body.style.overflow = 'auto';
         smoothScrollTo('destacados');
     });
-    goToActividades.addEventListener('click', () => {
+    goToActividades?.addEventListener('click', () => {
         welcomeModal.classList.add('hidden');
         document.body.style.overflow = 'auto';
         smoothScrollTo('actividades');
     });
-    welcomeModal.addEventListener('click', (e) => {
+    welcomeModal?.addEventListener('click', (e) => {
         if (e.target === welcomeModal) {
             welcomeModal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
     });
-    // Checkbox functionality
-    const checkboxes = document.querySelectorAll('.custom-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', function () {
-            const icon = this.nextElementSibling;
-            if (this.checked) {
-                icon.classList.add('bg-primary');
-                icon.classList.add('border-primary');
-            } else {
-                icon.classList.remove('bg-primary');
-                icon.classList.remove('border-primary');
-            }
-        });
-    });
-    // Activity filtering functionality
-    const activityFilters = document.getElementById('activity-filters');
-    const activitiesGrid = document.getElementById('activities-grid');
-    function filterActivities(category) {
-        const activities = activitiesGrid.querySelectorAll('.activity-card');
-        activities.forEach(activity => {
-            const activityCategory = activity.querySelector('[class*="text-"][class*="-800"]').textContent;
-            if (category === 'all' || activityCategory === category) {
-                activity.style.display = 'block';
-            } else {
-                activity.style.display = 'none';
-            }
-        });
-    }
-    function updateFilterButtons(selectedFilter) {
-        const buttons = activityFilters.querySelectorAll('button');
-        buttons.forEach(button => {
-            if (button.getAttribute('data-filter') === selectedFilter) {
-                button.className = 'bg-primary text-white px-6 py-3 rounded-button font-medium shadow-sm whitespace-nowrap';
-            } else {
-                button.className = 'bg-white text-gray-700 px-6 py-3 rounded-button font-medium shadow-sm hover:bg-gray-100 transition-colors whitespace-nowrap';
-            }
-        });
-    }
-    activityFilters.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON') {
-            const selectedFilter = e.target.getAttribute('data-filter');
-            filterActivities(selectedFilter);
-            updateFilterButtons(selectedFilter);
-        }
-    });
 });
 
-// Carousel functionality
-document.addEventListener('DOMContentLoaded', function () {
+// Galería modal
+document.querySelectorAll('.open-gallery-modal').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const galleryKey = this.getAttribute('data-gallery');
+        const modal = document.getElementById('galleryModal');
+        const title = document.getElementById('galleryModalTitle');
+        const imagesContainer = document.getElementById('galleryModalImages');
+        const data = galleryData[galleryKey];
 
-    const carousel = document.getElementById('carousel');
-    const prevButton = document.getElementById('prevSlide');
-    const nextButton = document.getElementById('nextSlide');
-    const slideButtons = [
-        document.getElementById('slide0'),
-        document.getElementById('slide1'),
-        document.getElementById('slide2'),
-        document.getElementById('slide3') // Added for the fourth slide
-    ];
-
-    let currentSlide = 0;
-    const totalSlides = 4;
-
-    function updateSlides(index) {
-        // Handle circular navigation
-        if (index < 0) index = totalSlides - 1;
-        if (index >= totalSlides) index = 0;
-
-        // Update carousel position
-        carousel.style.transform = `translateX(-${index * 100}%)`;
-
-        // Update indicator buttons
-        slideButtons.forEach((button, i) => {
-            if (i === index) {
-                button.classList.remove('bg-white/50');
-                button.classList.add('bg-white');
-            } else {
-                button.classList.remove('bg-white');
-                button.classList.add('bg-white/50');
-            }
-        });
-
-        currentSlide = index;
-    }
-
-    // Navigation button event listeners
-    prevButton.addEventListener('click', () => {
-        updateSlides(currentSlide - 1);
-    });
-
-    nextButton.addEventListener('click', () => {
-        updateSlides(currentSlide + 1);
-    });
-
-    // Indicator button event listeners
-    slideButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            updateSlides(index);
-        });
-    });
-
-    // Auto-advance slides every 5 seconds
-    setInterval(() => {
-        updateSlides(currentSlide + 1);
-    }, 5000);
-});
-
-// Mobile Menu Toggle
-document.addEventListener('DOMContentLoaded', function () {
-    const menuButton = document.getElementById('menuButton');
-    const mobileMenu = document.getElementById('mobileMenu');
-    let isMenuOpen = false;
-
-    if (!menuButton || !mobileMenu) {
-        console.error('Menu elements not found!');
-        return;
-    }
-
-    menuButton.addEventListener('click', function (e) {
-        e.preventDefault();
-        isMenuOpen = !isMenuOpen;
-        console.log('Menu button clicked, isMenuOpen:', isMenuOpen);
-
-        if (isMenuOpen) {
-            mobileMenu.classList.remove('hidden');
-            menuButton.querySelector('i').className = 'ri-close-line text-white ri-2x';
+        if (data) {
+            title.textContent = data.title;
+            imagesContainer.innerHTML = data.images.map(src =>
+                `<img src="${src}" alt="" class="h-32 w-32 object-cover rounded-lg shadow-md border border-gray-200">`
+            ).join('');
         } else {
-            mobileMenu.classList.add('hidden');
-            menuButton.querySelector('i').className = 'ri-menu-line text-white ri-2x';
+            title.textContent = "Galería";
+            imagesContainer.innerHTML = "<p class='text-gray-500'>No hay imágenes disponibles.</p>";
         }
-    });
 
-    // Close menu when clicking links
-    const mobileLinks = mobileMenu.getElementsByTagName('a');
-    Array.from(mobileLinks).forEach(link => {
-        link.addEventListener('click', () => {
-            isMenuOpen = false;
-            mobileMenu.classList.add('hidden');
-            menuButton.querySelector('i').className = 'ri-menu-line text-white ri-2x';
-        });
+        modal.classList.remove('hidden');
     });
 });
+
+// Abrir imagen de galería en modal ampliado
+document.getElementById('galleryModalImages')?.addEventListener('click', function (e) {
+    if (e.target.tagName === 'IMG') {
+        openImageModal({ src: e.target.src, alt: e.target.alt });
+    }
+});
+
+// Modal de información expandida
+document.querySelectorAll('.open-info-modal').forEach(btn => {
+    btn.addEventListener('click', function () {
+        const infoKey = this.getAttribute('data-info');
+        const modal = document.getElementById('infoModal');
+        const title = document.getElementById('infoModalTitle');
+        const image = document.getElementById('infoModalImage');
+        const text = document.getElementById('infoModalText');
+        const data = infoData[infoKey];
+
+        if (data) {
+            title.textContent = data.title;
+            image.src = data.image;
+            image.alt = data.title;
+            text.innerHTML = data.text;
+        } else {
+            title.textContent = "Información";
+            image.src = "";
+            text.innerHTML = "<p class='text-gray-500'>No hay información disponible.</p>";
+        }
+
+        modal.classList.remove('hidden');
+    });
+});
+
+// Modal de información legal
+document.querySelectorAll('.open-legal-modal').forEach(link => {
+    link.addEventListener('click', function (e) {
+        e.preventDefault();
+        const key = this.getAttribute('data-legal');
+        const modal = document.getElementById('legalModal');
+        const title = document.getElementById('legalModalTitle');
+        const text = document.getElementById('legalModalText');
+        const data = legalTexts[key];
+
+        if (data) {
+            title.textContent = data.title || "Información Legal";
+            text.innerHTML = data.text;
+        } else {
+            title.textContent = "Información Legal";
+            text.innerHTML = "<p class='text-gray-500'>No hay información disponible.</p>";
+        }
+
+        modal.classList.remove('hidden');
+    });
+});
+
+// Funciones para el modal de imagen ampliada
+function openImageModal({ src, alt = '', title = '', desc = '' }) {
+    const modal = document.getElementById('imageFullModal');
+    const img = document.getElementById('imageFullModalImg');
+    const overlay = document.getElementById('imageFullModalOverlay');
+    const modalTitle = document.getElementById('imageFullModalTitle');
+    const modalDesc = document.getElementById('imageFullModalDesc');
+
+    img.src = src;
+    img.alt = alt;
+    if (title || desc) {
+        overlay.classList.remove('hidden');
+        modalTitle.textContent = title;
+        modalDesc.textContent = desc;
+    } else {
+        overlay.classList.add('hidden');
+        modalTitle.textContent = '';
+        modalDesc.textContent = '';
+    }
+    modal.classList.remove('hidden');
+}
+
+function closeImageModal() {
+    document.getElementById('imageFullModal').classList.add('hidden');
+}
+
+// Cierre de modales genéricos
+document.getElementById('closeGalleryModal')?.addEventListener('click', () => closeModal('galleryModal'));
+document.getElementById('closeInfoModal')?.addEventListener('click', () => closeModal('infoModal'));
+document.getElementById('closeLegalModal')?.addEventListener('click', () => closeModal('legalModal'));
+document.getElementById('closeImageFullModal')?.addEventListener('click', closeImageModal);
+document.getElementById('imageFullModal')?.addEventListener('click', function (e) {
+    if (e.target === this) closeImageModal();
+});
+
+// Función genérica para cerrar modales
+function closeModal(modalId) {
+    document.getElementById(modalId)?.classList.add('hidden');
+}
 
 // Mapa interactivo y vista 360°
 document.addEventListener('DOMContentLoaded', function () {
@@ -317,6 +321,7 @@ document.querySelectorAll('#mapa ul li[data-coords]').forEach(function (item) {
         document.getElementById('popupTitle').textContent = this.querySelector('span').textContent;
         document.getElementById('popupDescription').textContent = this.getAttribute('data-description');
         document.getElementById('popupImage').src = this.getAttribute('data-image');
+        document.getElementById('popupImage').alt = this.querySelector('span').textContent;
         document.getElementById('mapPopup').classList.remove('hidden');
     });
 });
@@ -333,160 +338,12 @@ document.getElementById('mapPopup').addEventListener('click', function (e) {
     }
 });
 
-// Galerías de ejemplo (personaliza las imágenes)
-document.querySelectorAll('.open-gallery-modal').forEach(btn => {
-    btn.addEventListener('click', function () {
-        const galleryKey = this.getAttribute('data-gallery');
-        const modal = document.getElementById('galleryModal');
-        const title = document.getElementById('galleryModalTitle');
-        const imagesContainer = document.getElementById('galleryModalImages');
-        const data = galleryData[galleryKey];
-
-        if (data) {
-            title.textContent = data.title;
-            imagesContainer.innerHTML = data.images.map(src =>
-                `<img src="${src}" alt="" class="h-32 w-32 object-cover rounded-lg shadow-md border border-gray-200">`
-            ).join('');
-        } else {
-            title.textContent = "Galería";
-            imagesContainer.innerHTML = "<p class='text-gray-500'>No hay imágenes disponibles.</p>";
-        }
-
-        modal.classList.remove('hidden');
+// Abrir imagen del punto de interés en modal ampliado
+document.getElementById('popupImage')?.addEventListener('click', function () {
+    openImageModal({
+        src: this.src,
+        alt: this.alt,
+        title: document.getElementById('popupTitle').textContent,
+        desc: document.getElementById('popupDescription').textContent
     });
 });
-
-document.getElementById('closeGalleryModal').addEventListener('click', function () {
-    document.getElementById('galleryModal').classList.add('hidden');
-});
-
-// Información expandida para el modal
-document.querySelectorAll('.open-info-modal').forEach(btn => {
-    btn.addEventListener('click', function () {
-        const infoKey = this.getAttribute('data-info');
-        const modal = document.getElementById('infoModal');
-        const title = document.getElementById('infoModalTitle');
-        const image = document.getElementById('infoModalImage');
-        const text = document.getElementById('infoModalText');
-        const data = infoData[infoKey];
-
-        if (data) {
-            title.textContent = data.title;
-            image.src = data.image;
-            image.alt = data.title;
-            text.innerHTML = data.text;
-        } else {
-            title.textContent = "Información";
-            image.src = "";
-            text.innerHTML = "<p class='text-gray-500'>No hay información disponible.</p>";
-        }
-
-        modal.classList.remove('hidden');
-    });
-});
-
-document.getElementById('closeInfoModal').addEventListener('click', function () {
-    document.getElementById('infoModal').classList.add('hidden');
-});
-
-// Modal de información legal
-document.querySelectorAll('.open-legal-modal').forEach(link => {
-    link.addEventListener('click', function (e) {
-        e.preventDefault();
-        const key = this.getAttribute('data-legal');
-        const modal = document.getElementById('legalModal');
-        const title = document.getElementById('legalModalTitle');
-        const text = document.getElementById('legalModalText');
-        const data = legalTexts[key];
-
-        if (data) {
-            title.textContent = data.title;
-            text.innerHTML = data.text;
-        } else {
-            title.textContent = "Información Legal";
-            text.innerHTML = "<p class='text-gray-500'>No hay información disponible.</p>";
-        }
-
-        modal.classList.remove('hidden');
-    });
-});
-
-document.getElementById('closeLegalModal').addEventListener('click', function () {
-    document.getElementById('legalModal').classList.add('hidden');
-});
-
-// Abrir imagen en tamaño completo desde la galería
-document.getElementById('galleryModalImages')?.addEventListener('click', function (e) {
-    if (e.target.tagName === 'IMG') {
-        const fullModal = document.getElementById('imageFullModal');
-        const fullImg = document.getElementById('imageFullModalImg');
-        fullImg.src = e.target.src;
-        fullImg.alt = e.target.alt || '';
-        fullModal.classList.remove('hidden');
-    }
-});
-
-// Cerrar el modal de imagen ampliada
-document.getElementById('closeImageFullModal')?.addEventListener('click', function () {
-    document.getElementById('imageFullModal').classList.add('hidden');
-});
-
-// También cerrar al hacer clic fuera de la imagen
-document.getElementById('imageFullModal')?.addEventListener('click', function (e) {
-    if (e.target === this) {
-        this.classList.add('hidden');
-    }
-});
-
-// Cierre del modal destacado
-document.getElementById('closeDestacadoFullModal')?.addEventListener('click', function () {
-    document.getElementById('destacadoFullModal').classList.add('hidden');
-});
-
-document.getElementById('destacadoFullModal')?.addEventListener('click', function (e) {
-    if (e.target === this) {
-        this.classList.add('hidden');
-    }
-});
-
-// Carousel dinámico con flechas
-setTimeout(() => {
-    let currentSlide = 0;
-    const destacados = legalTexts.destacados || [];
-    const carousel = document.getElementById('carousel');
-    const indicatorsContainer = document.getElementById('carouselIndicators');
-    const slideButtons = Array.from(indicatorsContainer.querySelectorAll('button'));
-    const prevButton = document.getElementById('prevSlide');
-    const nextButton = document.getElementById('nextSlide');
-    const totalSlides = slideButtons.length;
-
-    function updateSlides(index) {
-        if (index < 0) index = totalSlides - 1;
-        if (index >= totalSlides) index = 0;
-        carousel.style.transform = `translateX(-${index * 100}%)`;
-        slideButtons.forEach((button, i) => {
-            button.className = `w-3 h-3 rounded-full ${i === index ? 'bg-white' : 'bg-white/50'}`;
-        });
-        currentSlide = index;
-    }
-
-    slideButtons.forEach((button, index) => {
-        button.addEventListener('click', () => {
-            updateSlides(index);
-        });
-    });
-
-    prevButton?.addEventListener('click', () => {
-        updateSlides(currentSlide - 1);
-    });
-
-    nextButton?.addEventListener('click', () => {
-        updateSlides(currentSlide + 1);
-    });
-
-    setInterval(() => {
-        updateSlides(currentSlide + 1);
-    }, 5000);
-
-    updateSlides(0);
-}, 300);
