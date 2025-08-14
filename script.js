@@ -15,13 +15,14 @@ fetch('datos.json')
         const interestColumn = document.getElementById('interestColumn');
         if (interestColumn && mapPoints.length) {
             const ul = interestColumn.querySelector('ul');
+            ul.className = "grid grid-cols-2 gap-1 md:block"; // 2 columnas en móvil, lista en escritorio
             ul.innerHTML = mapPoints.map(point => `
                 <li
-                  class="flex items-center px-2 py-2 bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors text-sm"
+                  class="flex items-center gap-1 py-1 px-1 text-xs md:py-2 md:px-2 md:text-sm bg-white rounded shadow-sm cursor-pointer hover:bg-primary hover:text-white transition-colors"
                   data-coords="${point.coords}"
                   data-description="${point.description}"
                   data-image="${point.image}">
-                  <i class="${point.icon || 'ri-map-pin-line'} text-lg mr-2"></i>
+                  <i class="${point.icon || 'ri-map-pin-line'} text-base md:text-lg mr-1"></i>
                   <span>${point.name}</span>
                 </li>
             `).join('');
@@ -161,6 +162,27 @@ document.addEventListener('DOMContentLoaded', function () {
             welcomeModal.classList.add('hidden');
             document.body.style.overflow = 'auto';
         }
+    });
+});
+
+// --- Menú móvil ---
+document.addEventListener('DOMContentLoaded', function () {
+    const menuButton = document.getElementById('menuButton');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let isMenuOpen = false;
+    if (!menuButton || !mobileMenu) return;
+    menuButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        isMenuOpen = !isMenuOpen;
+        mobileMenu.classList.toggle('hidden', !isMenuOpen);
+        menuButton.querySelector('i').className = isMenuOpen ? 'ri-close-line text-white ri-2x' : 'ri-menu-line text-white ri-2x';
+    });
+    Array.from(mobileMenu.getElementsByTagName('a')).forEach(link => {
+        link.addEventListener('click', () => {
+            isMenuOpen = false;
+            mobileMenu.classList.add('hidden');
+            menuButton.querySelector('i').className = 'ri-menu-line text-white ri-2x';
+        });
     });
 });
 
@@ -346,4 +368,36 @@ document.getElementById('popupImage')?.addEventListener('click', function () {
         title: document.getElementById('popupTitle').textContent,
         desc: document.getElementById('popupDescription').textContent
     });
+});
+
+// Activity filtering functionality
+const activityFilters = document.getElementById('activity-filters');
+const activitiesGrid = document.getElementById('activities-grid');
+function filterActivities(category) {
+    const activities = activitiesGrid.querySelectorAll('.activity-card');
+    activities.forEach(activity => {
+        const activityCategory = activity.querySelector('[class*="text-"][class*="-800"]').textContent;
+        if (category === 'all' || activityCategory === category) {
+            activity.style.display = 'block';
+        } else {
+            activity.style.display = 'none';
+        }
+    });
+}
+function updateFilterButtons(selectedFilter) {
+    const buttons = activityFilters.querySelectorAll('button');
+    buttons.forEach(button => {
+        if (button.getAttribute('data-filter') === selectedFilter) {
+            button.className = 'bg-primary text-white px-6 py-3 rounded-button font-medium shadow-sm whitespace-nowrap';
+        } else {
+            button.className = 'bg-white text-gray-700 px-6 py-3 rounded-button font-medium shadow-sm hover:bg-gray-100 transition-colors whitespace-nowrap';
+        }
+    });
+}
+activityFilters.addEventListener('click', (e) => {
+    if (e.target.tagName === 'BUTTON') {
+        const selectedFilter = e.target.getAttribute('data-filter');
+        filterActivities(selectedFilter);
+        updateFilterButtons(selectedFilter);
+    }
 });

@@ -110,7 +110,7 @@
         },
         {
             "name": "Bar - Cafetería La Plaza",
-            "coords": "41.618548,-1.966567",
+            "coords": "41.617876,-1.966736",
             "description": "Bar tradicional con terraza en la plaza.",
             "image": "/Assets/barplaza.jpg",
             "icon": "ri-restaurant-line"
@@ -120,14 +120,14 @@
             "coords": "41.61792311257265,-1.9659621360262496",
             "description": "Antiguo lavadero público, testigo de la vida cotidiana del pueblo.",
             "image": "/Assets/lavadero.jpg",
-            "icon": "ri-water-line"
+            "icon": "ri-water-flash-line"
         },
         {
             "name": "Fuente Vieja",
             "coords": "41.618439,-1.963608",
             "description": "Fuente histórica donde los vecinos se abastecían de agua y daban de beber a sus animales.",
             "image": "/Assets/lavadero.jpg",
-            "icon": "ri-water-line"
+            "icon": "ri-blaze-line"
         },
         {
             "name": "Ermita Virgen de la Serna",
@@ -141,7 +141,7 @@
             "coords": "41.6210904,-1.9683969",
             "description": "Restos del castillo que defendía la villa en la Edad Media.",
             "image": "/Assets/castillo.jpg",
-            "icon": "ri-castle-line"
+            "icon": "ri-bank-line"
         },
         {
             "name": "Río Manubles",
@@ -149,6 +149,20 @@
             "description": "Ideal para paseos y disfrutar de la naturaleza por el cañon en el cual discurre.",
             "image": "/Assets/riomanubles.jpg",
             "icon": "ri-water-flash-line"
+        },
+        {
+            "name": "Paraje y manantial El Ojo",
+            "coords": "41.626661, -1.964127",
+            "description": "Nacimiento de agua del cual el pueblo se abastece de agua. Un lugar maravilloso para pasear, que parece sacado de un cuento.",
+            "image": "/Assets/riomanubles.jpg",
+            "icon": " ri-leaf-line"
+        },
+        {
+            "name": "Cementerio Municipal de Ciria",
+            "coords": "41.618615,-1.9650321",
+            "description": "Lugar de descanso de los habitantes del pueblo, con un entorno tranquilo y vistas al campo.",
+            "image": "/Assets/cementerio.jpg",
+            "icon": "ri-rainbow-fill"
         }
     ]
 }
