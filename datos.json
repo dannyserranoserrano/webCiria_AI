@@ -47,12 +47,12 @@
         },
         "arquitectura": {
             "title": "Arquitectura Tradicional",
-            "image": "/Assets/calles1.jpg",
+            "image": "/Assets/calles1.webp",
             "text": "<p>Las construcciones de Ciria destacan por el uso de la piedra caliza local, creando un conjunto arquitectónico armonioso y bien conservado. Las casas tradicionales, con sus balcones de madera y tejados de teja árabe, son un ejemplo perfecto de la arquitectura soriana.</p><ul class='list-disc pl-6 mt-4'><li>Casas de piedra y madera</li><li>Tejados de teja árabe</li><li>Plaza Mayor y edificios históricos</li></ul>"
         },
         "gastronomia": {
             "title": "Gastronomía Local",
-            "image": "/Assets/gastronomia.jpg",
+            "image": "/Assets/gastronomia.webp",
             "text": "<p>La cocina de Ciria es un reflejo de la tradición castellana, con platos contundentes como el cordero asado, las migas pastoriles y las judías pintas. Los productos locales como las setas, la caza y los embutidos artesanales son la base de su rica gastronomía.</p><ul class='list-disc pl-6 mt-4'><li>Cordero asado</li><li>Migas pastoriles</li><li>Embutidos y setas de temporada</li></ul>"
         }
     },
@@ -60,9 +60,9 @@
         "calles": {
             "title": "Calles Empinadas",
             "images": [
-                "/Assets/calles1.jpg",
-                "/Assets/calles2.jpg",
-                "/Assets/calles3.jpg"
+                "/Assets/calles1.webp",
+                "/Assets/calles2.webp",
+                "/Assets/calles3.webp"
             ]
         },
         "paisajes": {
@@ -91,77 +91,77 @@
             "name": "Iglesia de Santa María La Mayor",
             "coords": "41.61878373876499,-1.965697190975157",
             "description": "Edificio religioso con elementos románicos y góticos, un tesoro arquitectónico.",
-            "image": "/Assets/100fd0725039eebb0423135dc7a6a4f6.jpg",
+            "image": "/Assets/100fd0725039eebb0423135dc7a6a4f6.webp",
             "icon": "ri-ancient-pavilion-line"
         },
         {
             "name": "Ayuntamiento",
             "coords": "41.617876,-1.966736",
             "description": "Sede del ayuntamiento de Ciria, centro administrativo del pueblo.",
-            "image": "/Assets/ayuntamiento.jpg",
+            "image": "/Assets/ayuntamiento.webp",
             "icon": "ri-government-line"
         },
         {
             "name": "Plaza Mayor",
             "coords": "41.61805545521695,-1.9666890146494072",
             "description": "Plaza principal donde se celebran eventos y reuniones del pueblo.",
-            "image": "/Assets/389a00997a1ced56222580363c90f667.jpg",
+            "image": "/Assets/389a00997a1ced56222580363c90f667.webp",
             "icon": "ri-building-2-line"
         },
         {
             "name": "Bar - Cafetería La Plaza",
             "coords": "41.617876,-1.966736",
             "description": "Bar tradicional con terraza en la plaza.",
-            "image": "/Assets/barplaza.jpg",
+            "image": "/Assets/barplaza.webp",
             "icon": "ri-restaurant-line"
         },
         {
             "name": "Lavadero Público",
             "coords": "41.61792311257265,-1.9659621360262496",
             "description": "Antiguo lavadero público, testigo de la vida cotidiana del pueblo.",
-            "image": "/Assets/lavadero.jpg",
+            "image": "/Assets/lavadero.webp",
             "icon": "ri-water-flash-line"
         },
         {
             "name": "Fuente Vieja",
             "coords": "41.618439,-1.963608",
             "description": "Fuente histórica donde los vecinos se abastecían de agua y daban de beber a sus animales.",
-            "image": "/Assets/lavadero.jpg",
+            "image": "/Assets/lavadero.webp",
             "icon": "ri-blaze-line"
         },
         {
             "name": "Ermita Virgen de la Serna",
             "coords": "41.62359,-1.99649",
             "description": "Ermita dedicada a la Virgen de la Serna, lugar de peregrinación local.",
-            "image": "/Assets/ermita.jpg",
+            "image": "/Assets/ermita.webp",
             "icon": "ri-ancient-pavilion-line"
         },
         {
             "name": "Castillo de Ciria",
             "coords": "41.6210904,-1.9683969",
             "description": "Restos del castillo que defendía la villa en la Edad Media.",
-            "image": "/Assets/castillo.jpg",
+            "image": "/Assets/castillo.webp",
             "icon": "ri-bank-line"
         },
         {
             "name": "Río Manubles",
             "coords": "41.64011614096962,-1.9615979268890462",
             "description": "Ideal para paseos y disfrutar de la naturaleza por el cañon en el cual discurre.",
-            "image": "/Assets/riomanubles.jpg",
+            "image": "/Assets/riomanubles.webp",
             "icon": "ri-water-flash-line"
         },
         {
             "name": "Paraje y manantial El Ojo",
             "coords": "41.626661, -1.964127",
             "description": "Nacimiento de agua del cual el pueblo se abastece de agua. Un lugar maravilloso para pasear, que parece sacado de un cuento.",
-            "image": "/Assets/riomanubles.jpg",
+            "image": "/Assets/riomanubles.webp",
             "icon": " ri-leaf-line"
         },
         {
             "name": "Cementerio Municipal de Ciria",
             "coords": "41.618615,-1.9650321",
             "description": "Lugar de descanso de los habitantes del pueblo, con un entorno tranquilo y vistas al campo.",
-            "image": "/Assets/cementerio.jpg",
+            "image": "/Assets/cementerio.webp",
             "icon": "ri-rainbow-fill"
         }
     ]
