@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const welcomeModal = document.getElementById('welcomeModal');
     const closeModalBtn = document.getElementById('closeModal');
     const goToDestacados = document.getElementById('goToDestacados');
-    const goToActividades = document.getElementById('goToActividades');
+    const goToMapa = document.getElementById('goToMapa');
 
     function smoothScrollTo(elementId) {
         const element = document.getElementById(elementId);
@@ -152,10 +152,10 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.style.overflow = 'auto';
         smoothScrollTo('destacados');
     });
-    goToActividades?.addEventListener('click', () => {
+    goToMapa?.addEventListener('click', () => {
         welcomeModal.classList.add('hidden');
         document.body.style.overflow = 'auto';
-        smoothScrollTo('actividades');
+        smoothScrollTo('mapa');
     });
     welcomeModal?.addEventListener('click', (e) => {
         if (e.target === welcomeModal) {
@@ -186,7 +186,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Galería modal
+// Galería modal (calles, paisajes, etc.)
 document.querySelectorAll('.open-gallery-modal').forEach(btn => {
     btn.addEventListener('click', function () {
         const galleryKey = this.getAttribute('data-gallery');
@@ -195,11 +195,12 @@ document.querySelectorAll('.open-gallery-modal').forEach(btn => {
         const imagesContainer = document.getElementById('galleryModalImages');
         const data = galleryData[galleryKey];
 
-        if (data) {
+        if (data && data.images) {
             title.textContent = data.title;
             imagesContainer.innerHTML = data.images.map(src =>
-                `<img src="${src}" alt="" class="h-32 w-32 object-cover rounded-lg shadow-md border border-gray-200">`
+                `<img src="${src}" alt="${data.title}" class="h-32 w-32 object-cover rounded-lg shadow-md border border-gray-200">`
             ).join('');
+            addImageClickEvents(imagesContainer, data.title);
         } else {
             title.textContent = "Galería";
             imagesContainer.innerHTML = "<p class='text-gray-500'>No hay imágenes disponibles.</p>";
@@ -209,12 +210,70 @@ document.querySelectorAll('.open-gallery-modal').forEach(btn => {
     });
 });
 
-// Abrir imagen de galería en modal ampliado
-document.getElementById('galleryModalImages')?.addEventListener('click', function (e) {
-    if (e.target.tagName === 'IMG') {
-        openImageModal({ src: e.target.src, alt: e.target.alt });
-    }
+// Evento para abrir el modal de festividades agrupadas
+document.querySelectorAll('.open-gallery-modal').forEach(btn => {
+    btn.addEventListener('click', function () {
+        if (btn.dataset.gallery === 'festividades') {
+            openFestividadesGalleryModal();
+        }
+        // ...otros casos...
+    });
 });
+
+// Abre el modal principal de festividades con los botones de cada fiesta
+async function openFestividadesGalleryModal() {
+    const festividades = galleryData.festividades;
+    const galleryModalImages = document.getElementById('galleryModalImages');
+    galleryModalImages.innerHTML = '';
+
+    festividades.groups.forEach((group, idx) => {
+        const btn = document.createElement('button');
+        btn.textContent = group.title;
+        btn.className = 'bg-white text-black px-6 py-3 rounded-button font-semibold shadow-sm m-2 border border-gray-300 hover:bg-gray-100 transition-colors text-lg';
+        btn.style.letterSpacing = '0.5px';
+        btn.addEventListener('click', () => openFiestaImagesModal(idx));
+        galleryModalImages.appendChild(btn);
+    });
+
+    document.getElementById('galleryModalTitle').textContent = festividades.title;
+    document.getElementById('galleryModal').classList.remove('hidden');
+}
+
+// Modal secundario para mostrar las fotos de una fiesta concreta
+function openFiestaImagesModal(groupIdx) {
+    const festividades = galleryData.festividades;
+    const group = festividades.groups[groupIdx];
+
+    let fiestaModal = document.getElementById('fiestaModal');
+    if (!fiestaModal) {
+        fiestaModal = document.createElement('div');
+        fiestaModal.id = 'fiestaModal';
+        fiestaModal.className = 'fixed inset-0 bg-black/70 flex items-center justify-center z-[1000]';
+        fiestaModal.innerHTML = `
+            <div class="bg-white rounded-lg shadow-2xl w-[90vw] max-w-3xl flex flex-col relative overflow-hidden p-8">
+                <button id="closeFiestaModal" class="absolute top-4 right-4 text-gray-600 hover:text-primary text-2xl font-bold">&times;</button>
+                <h3 id="fiestaModalTitle" class="text-2xl font-bold mb-6"></h3>
+                <div id="fiestaModalImages" class="flex flex-wrap gap-4"></div>
+            </div>
+        `;
+        document.body.appendChild(fiestaModal);
+        document.getElementById('closeFiestaModal').addEventListener('click', () => {
+            fiestaModal.classList.add('hidden');
+        });
+        fiestaModal.addEventListener('click', function (e) {
+            if (e.target === this) this.classList.add('hidden');
+        });
+    }
+
+    document.getElementById('fiestaModalTitle').textContent = group.title;
+    const imagesDiv = document.getElementById('fiestaModalImages');
+    imagesDiv.innerHTML = group.images.map(src =>
+        `<img src="${src}" alt="${group.title}" class="h-32 w-32 object-cover rounded-lg shadow-md border border-gray-200">`
+    ).join('');
+    addImageClickEvents(imagesDiv, group.title);
+
+    fiestaModal.classList.remove('hidden');
+}
 
 // Modal de información expandida
 document.querySelectorAll('.open-info-modal').forEach(btn => {
@@ -401,3 +460,18 @@ activityFilters.addEventListener('click', (e) => {
         updateFilterButtons(selectedFilter);
     }
 });
+
+// Función para añadir eventos de clic a las imágenes en un contenedor
+function addImageClickEvents(container, title = '', desc = '') {
+    Array.from(container.querySelectorAll('img')).forEach(img => {
+        img.classList.add('cursor-pointer');
+        img.addEventListener('click', function () {
+            openImageModal({
+                src: img.src,
+                alt: img.alt,
+                title: title || img.alt || '',
+                desc: desc || ''
+            });
+        });
+    });
+}

@@ -1,25 +1,25 @@
 {
     "destacados": [
         {
-            "img": "/Assets/Iglesia/IMG_1004.webp",
+            "img": "/Assets/Iglesia/IMG_1002.webp",
             "alt": "Iglesia de Santa María La Mayor",
             "title": "Iglesia de Santa María La Mayor",
             "desc": "Templo románico del siglo XII con detalles arquitectónicos únicos"
         },
         {
-            "img": "/Assets/Castillo/IMG_20250202_124604.webp",
+            "img": "Assets/Castillo/IMG_20250202_124607.webp",
             "alt": "Castillo de Ciria",
             "title": "Castillo de Ciria",
             "desc": "Fortaleza medieval con impresionantes vistas del valle"
         },
         {
-            "img": "/Assets/Iglesia/plazaMayor.webp",
+            "img": "Assets/Plaza Mayor/IMG_1021.webp",
             "alt": "Plaza Mayor de Ciria",
             "title": "Plaza Mayor de Ciria",
             "desc": "El corazón del pueblo, donde se encuentra la vida social y cultural"
         },
         {
-            "img": "/Assets/Castillo/bigornia.webp",
+            "img": "Assets/Bigornia/DSC_0531.webp",
             "alt": "Puerto de La Bigornia",
             "title": "Puerto de La Bigornia",
             "desc": "Un hermoso paraje natural ideal para el senderismo y la observación de aves. Paso histórico fronterizo entre los reinos de Castilla y Aragón"
@@ -60,9 +60,16 @@
         "calles": {
             "title": "Calles Empinadas",
             "images": [
-                "/Assets/calles1.webp",
-                "/Assets/calles2.webp",
-                "/Assets/calles3.webp"
+                "Assets/Calles/IMG_1026.webp",
+                "Assets/Calles/IMG_1024.webp",
+                "Assets/Calles/IMG_1023.webp",
+                "Assets/Calles/IMG_1017.webp",
+                "Assets/Calles/IMG_1015.webp",
+                "Assets/Calles/DSC_0395.webp",
+                "Assets/Calles/DSC_0392.webp",
+                "Assets/Calles/DSC_0212.webp",
+                "Assets/Calles/DSC_0211.webp",
+                "Assets/Calles/DSC_0210.webp"
             ]
         },
         "paisajes": {
@@ -72,17 +79,57 @@
                 "/Assets/Paisajes/IMG_20250417_130456.webp",
                 "/Assets/Paisajes/IMG_20250417_130509.webp",
                 "/Assets/Paisajes/IMG_20250417_182821.webp",
-                "/Assets/Paisajes/IMG_20250417_190704.webp"
+                "/Assets/Paisajes/IMG_20250417_190704.webp",
+                "Assets/Paisajes/DSC_0204.webp",
+                "Assets/Paisajes/DSC_0256.webp",
+                "Assets/Paisajes/DSC_0257.webp",
+                "Assets/Paisajes/IMG_1028.webp",
+                "Assets/Paisajes/IMG_1029.webp",
+                "Assets/Paisajes/IMG_1030.webp",
+                "Assets/Paisajes/IMG_1035.webp",
+                "Assets/Paisajes/IMG_1036.webp",
+                "Assets/Paisajes/IMG_1038.webp",
+                "Assets/Paisajes/IMG_1039.webp",
+                "Assets/Paisajes/IMG_1042.webp",
+                "Assets/Paisajes/IMG_1045.webp",
+                "Assets/Paisajes/IMG_1048.webp",
+                "Assets/Paisajes/IMG_1050.webp",
+                "Assets/Paisajes/IMG_1051.webp",
+                "Assets/Paisajes/IMG_1055.webp",
+                "Assets/Paisajes/IMG_1059.webp"
             ]
         },
         "festividades": {
             "title": "Festividades Locales",
-            "images": [
-                "/Assets/Festividades/IMG_20250420_115930.webp",
-                "/Assets/Festividades/IMG_20250420_120127.webp",
-                "/Assets/Festividades/IMG_20250420_120319.webp",
-                "/Assets/Festividades/IMG_20250420_121130.webp",
-                "/Assets/Festividades/IMG_20250420_121215.webp"
+            "groups": [
+                {
+                    "title": "Semana Santa",
+                    "images": [
+                        "Assets/Festividades/SemanaSanta/IMG_20250420_115930.webp",
+                        "Assets/Festividades/SemanaSanta/IMG_20250420_120127.webp",
+                        "Assets/Festividades/SemanaSanta/IMG_20250420_120319.webp",
+                        "Assets/Festividades/SemanaSanta/IMG_20250420_121130.webp",
+                        "Assets/Festividades/SemanaSanta/IMG_20250420_121215.webp"
+                    ]
+                },
+                {
+                    "title": "Fiestas de Agosto",
+                    "images": [
+                        "Assets/Festividades/Agosto/DSC_0350.webp",
+                        "Assets/Festividades/Agosto/DSC_0450.webp",
+                        "Assets/Festividades/Agosto/DSC_0478.webp",
+                        "Assets/Festividades/Agosto/DSC_0570.webp",
+                        "Assets/Festividades/Agosto/DSC_0631.webp",
+                        "Assets/Festividades/Agosto/DSC_1032.webp",
+                        "Assets/Festividades/Agosto/DSC_1094.webp"
+                    ]
+                },
+                {
+                    "title": "Fiestecilla de Mayo",
+                    "images": [
+                        "/Assets/Festividades/mayo_1.webp"
+                    ]
+                }
             ]
         }
     },
@@ -91,56 +138,63 @@
             "name": "Iglesia de Santa María La Mayor",
             "coords": "41.61878373876499,-1.965697190975157",
             "description": "Edificio religioso con elementos románicos y góticos, un tesoro arquitectónico.",
-            "image": "/Assets/100fd0725039eebb0423135dc7a6a4f6.webp",
+            "image": "Assets/Iglesia/IMG_1001.webp",
             "icon": "ri-ancient-pavilion-line"
         },
         {
             "name": "Ayuntamiento",
             "coords": "41.617876,-1.966736",
             "description": "Sede del ayuntamiento de Ciria, centro administrativo del pueblo.",
-            "image": "/Assets/ayuntamiento.webp",
+            "image": "Assets/Ayuntamiento/DSC_0377.webp",
             "icon": "ri-government-line"
         },
         {
             "name": "Plaza Mayor",
             "coords": "41.61805545521695,-1.9666890146494072",
             "description": "Plaza principal donde se celebran eventos y reuniones del pueblo.",
-            "image": "/Assets/389a00997a1ced56222580363c90f667.webp",
+            "image": "Assets/Plaza Mayor/IMG_1021.webp",
             "icon": "ri-building-2-line"
         },
         {
             "name": "Bar - Cafetería La Plaza",
             "coords": "41.617876,-1.966736",
             "description": "Bar tradicional con terraza en la plaza.",
-            "image": "/Assets/barplaza.webp",
+            "image": "Assets/Plaza Mayor/IMG_1018.webp",
             "icon": "ri-restaurant-line"
         },
         {
             "name": "Lavadero Público",
             "coords": "41.61792311257265,-1.9659621360262496",
             "description": "Antiguo lavadero público, testigo de la vida cotidiana del pueblo.",
-            "image": "/Assets/lavadero.webp",
+            "image": "Assets/Lavadero/IMG_1099.webp",
             "icon": "ri-water-flash-line"
         },
         {
             "name": "Fuente Vieja",
             "coords": "41.618439,-1.963608",
             "description": "Fuente histórica donde los vecinos se abastecían de agua y daban de beber a sus animales.",
-            "image": "/Assets/lavadero.webp",
+            "image": "Assets/FVieja_Puente/IMG_0989.webp",
             "icon": "ri-blaze-line"
         },
         {
             "name": "Ermita Virgen de la Serna",
             "coords": "41.62359,-1.99649",
             "description": "Ermita dedicada a la Virgen de la Serna, lugar de peregrinación local.",
-            "image": "/Assets/ermita.webp",
+            "image": "Assets/VirgenDeLaSerna/IMG_1078.webp",
+            "icon": "ri-ancient-pavilion-line"
+        },
+        {
+            "name": "Ermita Virgen del Espino",
+            "coords": "41.62177221909038, -1.9721491157247215",
+            "description": "Ermita dedicada a la Virgen del Espino, patrona de las fiestas de Septiembre.",
+            "image": "/Assets/ermita2.webp",
             "icon": "ri-ancient-pavilion-line"
         },
         {
             "name": "Castillo de Ciria",
             "coords": "41.6210904,-1.9683969",
             "description": "Restos del castillo que defendía la villa en la Edad Media.",
-            "image": "/Assets/castillo.webp",
+            "image": "Assets/Castillo/DSC_0477.webp",
             "icon": "ri-bank-line"
         },
         {
@@ -159,7 +213,7 @@
         },
         {
             "name": "Cementerio Municipal de Ciria",
-            "coords": "41.618615,-1.9650321",
+            "coords": "41.616093,-1.964938",
             "description": "Lugar de descanso de los habitantes del pueblo, con un entorno tranquilo y vistas al campo.",
             "image": "/Assets/cementerio.webp",
             "icon": "ri-rainbow-fill"
