@@ -9,13 +9,15 @@ http {
   sendfile        on;
   keepalive_timeout  65;
 
-  server {
+server {
     listen <%= ENV["PORT"] %>;
     root /app/public;
 
     location / {
-      index index.html;
-      try_files $uri /index.html;
+        index index.html;
+        try_files $uri /index.html;
     }
-  }
+}
+
+  
 }
