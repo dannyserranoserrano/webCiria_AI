@@ -13,10 +13,28 @@
             "desc": "Fortaleza medieval con impresionantes vistas del valle"
         },
         {
-            "img": "Assets/Plaza Mayor/IMG_1021.webp",
+            "img": "Assets/Plaza Mayor/PlazaDestacados.webp",
             "alt": "Plaza Mayor de Ciria",
             "title": "Plaza Mayor de Ciria",
             "desc": "El corazón del pueblo, donde se encuentra la vida social y cultural"
+        },
+        {
+            "img": "Assets/Ayuntamiento/DSC_0377.webp",
+            "alt": "Ayuntamiento de Ciria",
+            "title": "Ayuntamiento de Ciria",
+            "desc": "Edificio histórico que alberga la administración local"
+        },
+        {
+            "img": "/Assets/Lavadero/IMG_1099.webp",
+            "alt": "Lavadero Público",
+            "title": "Lavadero Público",
+            "desc": "Antiguo lavadero que muestra la vida cotidiana del pueblo"
+        },
+        {
+            "img": "Assets/FVieja_Puente/FViejaDestacados.webp",
+            "alt": "Fuente Vieja",
+            "title": "Fuente Vieja",
+            "desc": "Fuente histórica que abastecía de agua a los vecinos"
         },
         {
             "img": "Assets/Bigornia/DSC_0531.webp",
@@ -25,37 +43,6 @@
             "desc": "Un hermoso paraje natural ideal para el senderismo y la observación de aves. Paso histórico fronterizo entre los reinos de Castilla y Aragón"
         }
     ],
-    "legalTexts": {
-        "privacidad": {
-            "title": "Política de Privacidad",
-            "text": "<p>En Villa de Ciria nos comprometemos a proteger su privacidad. Sus datos personales serán tratados de acuerdo con la normativa vigente y solo se utilizarán para responder a sus consultas o mejorar nuestros servicios. No compartimos información con terceros sin su consentimiento. Puede ejercer sus derechos de acceso, rectificación y cancelación enviando un correo a villadeciria@gmail.com.</p>"
-        },
-        "terminos": {
-            "title": "Términos y Condiciones",
-            "text": "<p>El uso de este sitio web implica la aceptación de los presentes términos y condiciones. El contenido es informativo y puede estar sujeto a cambios sin previo aviso. Queda prohibida la reproducción total o parcial de los contenidos sin autorización expresa. El usuario se compromete a hacer un uso adecuado del sitio y a no emplearlo para actividades ilícitas.</p>"
-        },
-        "aviso": {
-            "title": "Aviso Legal",
-            "text": "<p>El dominio villadeciria.com así como los subdominios asociados son propiedad privada ajena al ayuntamiento de Ciria. Todos los derechos reservados. La información contenida en esta web ha sido elaborada con fines divulgativos. Para cualquier consulta o reclamación puede contactar en villadeciria@gmail.com. El acceso y uso de la web implica la aceptación de este aviso legal.</p>"
-        }
-    },
-    "infoData": {
-        "historia": {
-            "title": "Historia de Ciria",
-            "image": "/Assets/Castillo/DJI_0848.webp",
-            "text": "<p>Ciria tiene sus orígenes en la época medieval, cuando era un importante enclave defensivo en la frontera entre los reinos de Castilla y Aragón. Su castillo, hoy en ruinas, fue testigo de numerosas batallas y acontecimientos históricos. La villa conserva vestigios de su pasado en sus calles empedradas y edificios centenarios.</p><ul class='list-disc pl-6 mt-4'><li>Fundación en el siglo XI</li><li>Castillo medieval y murallas</li><li>Tradición de fiestas patronales</li></ul>"
-        },
-        "arquitectura": {
-            "title": "Arquitectura Tradicional",
-            "image": "/Assets/calles1.webp",
-            "text": "<p>Las construcciones de Ciria destacan por el uso de la piedra caliza local, creando un conjunto arquitectónico armonioso y bien conservado. Las casas tradicionales, con sus balcones de madera y tejados de teja árabe, son un ejemplo perfecto de la arquitectura soriana.</p><ul class='list-disc pl-6 mt-4'><li>Casas de piedra y madera</li><li>Tejados de teja árabe</li><li>Plaza Mayor y edificios históricos</li></ul>"
-        },
-        "gastronomia": {
-            "title": "Gastronomía Local",
-            "image": "/Assets/gastronomia.webp",
-            "text": "<p>La cocina de Ciria es un reflejo de la tradición castellana, con platos contundentes como el cordero asado, las migas pastoriles y las judías pintas. Los productos locales como las setas, la caza y los embutidos artesanales son la base de su rica gastronomía.</p><ul class='list-disc pl-6 mt-4'><li>Cordero asado</li><li>Migas pastoriles</li><li>Embutidos y setas de temporada</li></ul>"
-        }
-    },
     "galleryData": {
         "calles": {
             "title": "Calles Empinadas",
@@ -187,7 +174,7 @@
             "name": "Ermita Virgen del Espino",
             "coords": "41.62177221909038, -1.9721491157247215",
             "description": "Ermita dedicada a la Virgen del Espino, patrona de las fiestas de Septiembre.",
-            "image": "/Assets/ermita2.webp",
+            "image": "Assets/VirgenDelEspino/IMG_1033.jpeg",
             "icon": "ri-ancient-pavilion-line"
         },
         {
@@ -201,22 +188,53 @@
             "name": "Río Manubles",
             "coords": "41.64011614096962,-1.9615979268890462",
             "description": "Ideal para paseos y disfrutar de la naturaleza por el cañon en el cual discurre.",
-            "image": "/Assets/riomanubles.webp",
+            "image": "Assets/ElOjo/IMG_1129.jpeg",
             "icon": "ri-water-flash-line"
         },
         {
             "name": "Paraje y manantial El Ojo",
             "coords": "41.626661, -1.964127",
             "description": "Nacimiento de agua del cual el pueblo se abastece de agua. Un lugar maravilloso para pasear, que parece sacado de un cuento.",
-            "image": "/Assets/riomanubles.webp",
+            "image": "Assets/ElOjo/IMG_1151.jpeg",
             "icon": " ri-leaf-line"
         },
         {
             "name": "Cementerio Municipal de Ciria",
             "coords": "41.616093,-1.964938",
             "description": "Lugar de descanso de los habitantes del pueblo, con un entorno tranquilo y vistas al campo.",
-            "image": "/Assets/cementerio.webp",
+            "image": "Assets/Cementerio/IMG_1123.jpeg",
             "icon": "ri-rainbow-fill"
         }
-    ]
+    ],
+    "legalTexts": {
+        "privacidad": {
+            "title": "Política de Privacidad",
+            "text": "<p>En Villa de Ciria nos comprometemos a proteger su privacidad. Sus datos personales serán tratados de acuerdo con la normativa vigente y solo se utilizarán para responder a sus consultas o mejorar nuestros servicios. No compartimos información con terceros sin su consentimiento. Puede ejercer sus derechos de acceso, rectificación y cancelación enviando un correo a villadeciria@gmail.com.</p>"
+        },
+        "terminos": {
+            "title": "Términos y Condiciones",
+            "text": "<p>El uso de este sitio web implica la aceptación de los presentes términos y condiciones. El contenido es informativo y puede estar sujeto a cambios sin previo aviso. Queda prohibida la reproducción total o parcial de los contenidos sin autorización expresa. El usuario se compromete a hacer un uso adecuado del sitio y a no emplearlo para actividades ilícitas.</p>"
+        },
+        "aviso": {
+            "title": "Aviso Legal",
+            "text": "<p>El dominio villadeciria.com así como los subdominios asociados son propiedad privada ajena al ayuntamiento de Ciria. Todos los derechos reservados. La información contenida en esta web ha sido elaborada con fines divulgativos. Para cualquier consulta o reclamación puede contactar en villadeciria@gmail.com. El acceso y uso de la web implica la aceptación de este aviso legal.</p>"
+        }
+    },
+    "infoData": {
+        "historia": {
+            "title": "Historia de Ciria",
+            "image": "/Assets/Castillo/DJI_0848.webp",
+            "text": "<p>Ciria: Historia y encanto entre dos reinos En lo alto de un cerro se alzan los restos del antiguo castillo de Ciria, testigo de siglos de historia y disputas entre Castilla y Aragón. Sus muros, almenas y saeteras cuentan historias de reyes, nobles y viajeros que cruzaron estas tierras. Ciria también fue un punto clave en rutas de comercio y peregrinación, con las históricas Ventas que acogían a arrieros y viajeros. Se dice que incluso el joven Fernando, futuro Fernando el Católico, pasó una noche allí disfrazado. El patrimonio religioso completa el encanto del pueblo: la iglesia de Santa María la Mayor y las ermitas de la Virgen de la Serna y del Espino mantienen viva la fe y las tradiciones de sus vecinos. Ciria no es solo historia: es un lugar donde el pasado y la vida rural se entrelazan, ofreciendo un entorno lleno de historias, cultura y tradiciones que esperan ser descubiertas.</p><ul class='list-disc pl-6 mt-4'><li>Fundación en el siglo XI</li><li>Castillo medieval y murallas</li><li>Lugar de peregrinaje entre Castilla y Aragón</li></ul>"
+        },
+        "arquitectura": {
+            "title": "Arquitectura Tradicional",
+            "image": "Assets/Calles/IMG_1026.webp",
+            "text": "<p>La arquitectura de Ciria conserva todo el sabor de los pueblos sorianos, con calles estrechas y casas que parecen abrazarse unas a otras. Antiguamente, las viviendas se levantaban con adobe y piedra, materiales sencillos pero muy efectivos frente al clima. Después se cubrían con un lucido de cal, que solía pintarse de blanco o en tonos ocres y rojizos, dando vida y luz a las fachadas. En los últimos años, muchas casas han renovado su aspecto recubriendo las fachadas con piedra plana recogida en el propio término municipal, lo que añade un aire rústico y elegante sin perder la esencia tradicional. Las casas, de dos o tres alturas, muestran pequeños balcones de hierro forjado, puertas de madera y detalles sencillos que refuerzan su carácter popular. Los tejados de teja cerámica curva, con sus aleros de madera y chimeneas, completan una imagen que se mantiene fiel a la tradición de la zona. Caminar por Ciria es pasear entre muros de piedra, cal y teja, un paisaje arquitectónico que cuenta historias de generaciones pasadas y que todavía hoy conserva la autenticidad y el encanto de la vida rural soriana...</p><ul class='list-disc pl-6 mt-4'><li>Edificios de adobe y piedra</li><li>Tejados de teja cerámica tradicional</li><li>Fachadas recubiertas de piedras planas de la zona</li></ul>"
+        },
+        "gastronomia": {
+            "title": "Gastronomía Local",
+            "image": "Assets/Gastronomia/Gastronomia.png",
+            "text": "<p>La gastronomía de Ciria es un fiel reflejo de su tierra castellana: sencilla, contundente y ligada a la tradición. La caza ha sido siempre una parte fundamental en la mesa, con platos de conejo, liebre, perdiz, codorniz, jabalí, corzo o ciervo, que se cocinan en guisos sabrosos, asados o estofados, transmitiendo el sabor auténtico del monte soriano. Junto a la caza, el cerdo ha ocupado un lugar central gracias a las antiguas matanzas, de las que se obtenían chorizos, morcillas, lomos y jamones que llenaban las despensas para todo el año. Estos productos, todavía muy presentes, son parte de la identidad gastronómica del pueblo. Las huertas locales aportan frescura y variedad, con verduras como tomates, borraja, acelgas, lechugas o pepinos, que complementan los platos tradicionales y ponen el toque de color en la mesa. Otro tesoro de la gastronomía ciriana son las setas de cardo, muy apreciadas en la zona. Su recolección en otoño es casi un ritual que une a vecinos y visitantes, y su sabor delicado convierte cualquier guiso o revuelto en un auténtico manjar. En Ciria, cada bocado cuenta la historia de la tierra y de las costumbres que han pasado de generación en generación, ofreciendo una cocina auténtica, de temporada y profundamente ligada al entorno.</p><ul class='list-disc pl-6 mt-4'><li>Platos de caza</li><li>Setas de Cardo</li><li>Embutidos y productos de la huerta</li></ul>"
+        }
+    }
 }

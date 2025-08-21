@@ -90,7 +90,7 @@ fetch('datos.json')
             prevButton?.addEventListener('click', () => updateSlides(currentSlide - 1));
             nextButton?.addEventListener('click', () => updateSlides(currentSlide + 1));
 
-            let autoAdvance = setInterval(() => updateSlides(currentSlide + 1), 5000);
+            let autoAdvance = setInterval(() => updateSlides(currentSlide + 1), 7000);
 
             updateSlides(0);
 
@@ -329,6 +329,9 @@ function openImageModal({ src, alt = '', title = '', desc = '' }) {
     const overlay = document.getElementById('imageFullModalOverlay');
     const modalTitle = document.getElementById('imageFullModalTitle');
     const modalDesc = document.getElementById('imageFullModalDesc');
+
+    // Asegura el z-index más alto
+    modal.classList.add('z-[1100]');
 
     img.src = src;
     img.alt = alt;
