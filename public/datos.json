@@ -174,7 +174,7 @@
             "name": "Ermita Virgen del Espino",
             "coords": "41.62177221909038, -1.9721491157247215",
             "description": "Ermita dedicada a la Virgen del Espino, patrona de las fiestas de Septiembre.",
-            "image": "Assets/VirgenDelEspino/IMG_1033.jpeg",
+            "image": "Assets/VirgenDelEspino/IMG_1033.webp",
             "icon": "ri-ancient-pavilion-line"
         },
         {
@@ -188,21 +188,21 @@
             "name": "Río Manubles",
             "coords": "41.64011614096962,-1.9615979268890462",
             "description": "Ideal para paseos y disfrutar de la naturaleza por el cañon en el cual discurre.",
-            "image": "Assets/ElOjo/IMG_1129.jpeg",
+            "image": "Assets/ElOjo/IMG_1129.webp",
             "icon": "ri-water-flash-line"
         },
         {
             "name": "Paraje y manantial El Ojo",
             "coords": "41.626661, -1.964127",
             "description": "Nacimiento de agua del cual el pueblo se abastece de agua. Un lugar maravilloso para pasear, que parece sacado de un cuento.",
-            "image": "Assets/ElOjo/IMG_1151.jpeg",
+            "image": "Assets/ElOjo/IMG_1151.webp",
             "icon": " ri-leaf-line"
         },
         {
             "name": "Cementerio Municipal de Ciria",
             "coords": "41.616093,-1.964938",
             "description": "Lugar de descanso de los habitantes del pueblo, con un entorno tranquilo y vistas al campo.",
-            "image": "Assets/Cementerio/IMG_1123.jpeg",
+            "image": "Assets/Cementerio/IMG_1123.webp",
             "icon": "ri-rainbow-fill"
         }
     ],
