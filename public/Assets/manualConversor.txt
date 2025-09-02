@@ -1,0 +1,12 @@
+Convierta prácticamente cualquier formato de imagen habitual a WebP,
+manteniendo subcarpetas y con la opción de borrar originales.
+
+Desde la terminal:
+./convertir_a_webp.sh "/ruta/a/carpeta" 85 no
+
+Definicion:
+"/ruta/a/carpeta" → carpeta donde están las fotos (con o sin subcarpetas).
+
+85 → calidad WebP (0 a 100, recomendado entre 80 y 90).
+
+no → no borra originales (cambiar a si para eliminarlos tras convertir).

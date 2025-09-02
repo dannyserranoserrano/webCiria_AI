@@ -335,15 +335,15 @@ function openImageModal({ src, alt = '', title = '', desc = '' }) {
 
     img.src = src;
     img.alt = alt;
-    if (title || desc) {
-        overlay.classList.remove('hidden');
-        modalTitle.textContent = title;
-        modalDesc.textContent = desc;
-    } else {
-        overlay.classList.add('hidden');
-        modalTitle.textContent = '';
-        modalDesc.textContent = '';
-    }
+    // if (title || desc) {
+    //     overlay.classList.remove('hidden');
+    //     modalTitle.textContent = title;
+    //     modalDesc.textContent = desc;
+    // } else {
+    //     overlay.classList.add('hidden');
+    //     modalTitle.textContent = '';
+    //     modalDesc.textContent = '';
+    // }
     modal.classList.remove('hidden');
 }
 
